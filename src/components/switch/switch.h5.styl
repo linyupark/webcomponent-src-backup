@@ -1,0 +1,19 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  &.disabled {
+    opacity: 0.8;
+  }
+
+  .roundball {
+    background: #fff;
+    border: 1px solid #f5f5f5;
+    border-radius: 50%;
+    position: absolute;
+    left: rem(2px);
+    top: rem(2px);
+    transition: transform .3s;
+  }
+}

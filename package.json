@@ -1,0 +1,35 @@
+{
+  "name": "nb-component",
+  "version": "0.0.1",
+  "description": "通用标准组件",
+  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/ionic.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/",
+    "dist/ht/",
+    "dist/zyb/"
+  ],
+  "scripts": {
+    "build": "cross-env NODE_ENV=production stencil build --docs",
+    "build-zyb": "cross-env NODE_ENV=production CLIENT=zyb stencil build --docs",
+    "build-ht": "cross-env NODE_ENV=production CLIENT=ht stencil build --docs",
+    "docs": "stencil build --docs",
+    "start": "cross-env NODE_ENV=develop stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "devDependencies": {
+    "@stencil/core": "^0.18.1",
+    "@stencil/postcss": "^0.1.0",
+    "@stencil/stylus": "^0.1.0",
+    "@types/jest": "^23.3.14",
+    "@types/node": "^10.12.27",
+    "cross-env": "^5.2.0",
+    "minirefresh": "^2.0.2",
+    "postcss-preset-env": "^6.5.0"
+  },
+  "license": "MIT"
+}
