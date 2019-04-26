@@ -132,6 +132,75 @@ export namespace Components {
     'showZero'?: boolean;
   }
 
+  interface NbButtonAsync {
+    /**
+    * 背景
+    */
+    'bg': string;
+    /**
+    * 字体色
+    */
+    'color': string;
+    /**
+    * 是否处于disable状态
+    */
+    'disable': boolean;
+    /**
+    * 点击对应的处理已经完成
+    */
+    'done': () => Promise<boolean>;
+    /**
+    * 高度
+    */
+    'height': number;
+    /**
+    * 是否处于loading状态
+    */
+    'loading': boolean;
+    /**
+    * 圆角
+    */
+    'radius': number;
+    /**
+    * 宽度
+    */
+    'width': number;
+  }
+  interface NbButtonAsyncAttributes extends StencilHTMLAttributes {
+    /**
+    * 背景
+    */
+    'bg'?: string;
+    /**
+    * 字体色
+    */
+    'color'?: string;
+    /**
+    * 是否处于disable状态
+    */
+    'disable'?: boolean;
+    /**
+    * 高度
+    */
+    'height'?: number;
+    /**
+    * 是否处于loading状态
+    */
+    'loading'?: boolean;
+    /**
+    * 处理点击
+    */
+    'onTap'?: (event: CustomEvent) => void;
+    /**
+    * 圆角
+    */
+    'radius'?: number;
+    /**
+    * 宽度
+    */
+    'width'?: number;
+  }
+
   interface NbCanvasRadar {
     /**
     * 雷达线颜色
@@ -676,116 +745,6 @@ export namespace Components {
     'textTitle'?: string;
   }
 
-  interface NbPullToDo {
-    /**
-    * 展示内容选择器
-    */
-    'contentSelector': string;
-    /**
-    * 拉动限制高度
-    */
-    'dampHeight': number;
-    /**
-    * 禁用哪项功能 refresh: 下拉刷新 | more: 加载更多
-    */
-    'disable'?: 'refresh' | 'more';
-    /**
-    * 加载完毕
-    */
-    'done': () => Promise<boolean>;
-    /**
-    * 加载状态
-    */
-    'loading': boolean;
-    /**
-    * 没有更多数据了
-    */
-    'noMore': boolean;
-    /**
-    * 当浏览器是返回状态是否尝试回到上一次的位置 ID
-    */
-    'positionSaveId'?: string;
-    /**
-    * 获取上次位置
-    */
-    'restoreLastPosition': () => Promise<any>;
-    /**
-    * 实际滚动显示区块选择器
-    */
-    'wrapperSelector': string;
-  }
-  interface NbPullToDoAttributes extends StencilHTMLAttributes {
-    /**
-    * 展示内容选择器
-    */
-    'contentSelector'?: string;
-    /**
-    * 拉动限制高度
-    */
-    'dampHeight'?: number;
-    /**
-    * 禁用哪项功能 refresh: 下拉刷新 | more: 加载更多
-    */
-    'disable'?: 'refresh' | 'more';
-    /**
-    * 加载状态
-    */
-    'loading'?: boolean;
-    /**
-    * 没有更多数据了
-    */
-    'noMore'?: boolean;
-    /**
-    * 当上拉触发加载更多
-    */
-    'onMore'?: (event: CustomEvent) => void;
-    /**
-    * 当下拉成立触发事件
-    */
-    'onRefresh'?: (event: CustomEvent) => void;
-    /**
-    * 当浏览器是返回状态是否尝试回到上一次的位置 ID
-    */
-    'positionSaveId'?: string;
-    /**
-    * 实际滚动显示区块选择器
-    */
-    'wrapperSelector'?: string;
-  }
-
-  interface NbRollPicker {
-    /**
-    * 选项内容对齐方向
-    */
-    'align': 'left' | 'center' | 'right';
-    /**
-    * 默认选中项目的key值
-    */
-    'defaultKey'?: number;
-    /**
-    * 获取当前选中的选项的数据
-    */
-    'getCurrentItem': () => Promise<any>;
-    /**
-    * 选项内容列表
-    */
-    'items': any[];
-  }
-  interface NbRollPickerAttributes extends StencilHTMLAttributes {
-    /**
-    * 选项内容对齐方向
-    */
-    'align'?: 'left' | 'center' | 'right';
-    /**
-    * 默认选中项目的key值
-    */
-    'defaultKey'?: number;
-    /**
-    * 选项内容列表
-    */
-    'items'?: any[];
-  }
-
   interface NbSearchBar {
     /**
     * 取消搜索操作
@@ -1211,6 +1170,7 @@ declare global {
     'NbActionsheet': Components.NbActionsheet;
     'NbAffix': Components.NbAffix;
     'NbBadge': Components.NbBadge;
+    'NbButtonAsync': Components.NbButtonAsync;
     'NbCanvasRadar': Components.NbCanvasRadar;
     'HtEmoji': Components.HtEmoji;
     'HtRichtextParser': Components.HtRichtextParser;
@@ -1224,8 +1184,6 @@ declare global {
     'NbModal': Components.NbModal;
     'NbPagination': Components.NbPagination;
     'NbDatetimePicker': Components.NbDatetimePicker;
-    'NbPullToDo': Components.NbPullToDo;
-    'NbRollPicker': Components.NbRollPicker;
     'NbSearchBar': Components.NbSearchBar;
     'NbStringLimit': Components.NbStringLimit;
     'NbSvgIcon': Components.NbSvgIcon;
@@ -1242,6 +1200,7 @@ declare global {
     'nb-actionsheet': Components.NbActionsheetAttributes;
     'nb-affix': Components.NbAffixAttributes;
     'nb-badge': Components.NbBadgeAttributes;
+    'nb-button-async': Components.NbButtonAsyncAttributes;
     'nb-canvas-radar': Components.NbCanvasRadarAttributes;
     'ht-emoji': Components.HtEmojiAttributes;
     'ht-richtext-parser': Components.HtRichtextParserAttributes;
@@ -1255,8 +1214,6 @@ declare global {
     'nb-modal': Components.NbModalAttributes;
     'nb-pagination': Components.NbPaginationAttributes;
     'nb-datetime-picker': Components.NbDatetimePickerAttributes;
-    'nb-pull-to-do': Components.NbPullToDoAttributes;
-    'nb-roll-picker': Components.NbRollPickerAttributes;
     'nb-search-bar': Components.NbSearchBarAttributes;
     'nb-string-limit': Components.NbStringLimitAttributes;
     'nb-svg-icon': Components.NbSvgIconAttributes;
@@ -1286,6 +1243,12 @@ declare global {
   var HTMLNbBadgeElement: {
     prototype: HTMLNbBadgeElement;
     new (): HTMLNbBadgeElement;
+  };
+
+  interface HTMLNbButtonAsyncElement extends Components.NbButtonAsync, HTMLStencilElement {}
+  var HTMLNbButtonAsyncElement: {
+    prototype: HTMLNbButtonAsyncElement;
+    new (): HTMLNbButtonAsyncElement;
   };
 
   interface HTMLNbCanvasRadarElement extends Components.NbCanvasRadar, HTMLStencilElement {}
@@ -1366,18 +1329,6 @@ declare global {
     new (): HTMLNbDatetimePickerElement;
   };
 
-  interface HTMLNbPullToDoElement extends Components.NbPullToDo, HTMLStencilElement {}
-  var HTMLNbPullToDoElement: {
-    prototype: HTMLNbPullToDoElement;
-    new (): HTMLNbPullToDoElement;
-  };
-
-  interface HTMLNbRollPickerElement extends Components.NbRollPicker, HTMLStencilElement {}
-  var HTMLNbRollPickerElement: {
-    prototype: HTMLNbRollPickerElement;
-    new (): HTMLNbRollPickerElement;
-  };
-
   interface HTMLNbSearchBarElement extends Components.NbSearchBar, HTMLStencilElement {}
   var HTMLNbSearchBarElement: {
     prototype: HTMLNbSearchBarElement;
@@ -1442,6 +1393,7 @@ declare global {
     'nb-actionsheet': HTMLNbActionsheetElement
     'nb-affix': HTMLNbAffixElement
     'nb-badge': HTMLNbBadgeElement
+    'nb-button-async': HTMLNbButtonAsyncElement
     'nb-canvas-radar': HTMLNbCanvasRadarElement
     'ht-emoji': HTMLHtEmojiElement
     'ht-richtext-parser': HTMLHtRichtextParserElement
@@ -1455,8 +1407,6 @@ declare global {
     'nb-modal': HTMLNbModalElement
     'nb-pagination': HTMLNbPaginationElement
     'nb-datetime-picker': HTMLNbDatetimePickerElement
-    'nb-pull-to-do': HTMLNbPullToDoElement
-    'nb-roll-picker': HTMLNbRollPickerElement
     'nb-search-bar': HTMLNbSearchBarElement
     'nb-string-limit': HTMLNbStringLimitElement
     'nb-svg-icon': HTMLNbSvgIconElement
@@ -1473,6 +1423,7 @@ declare global {
     'nb-actionsheet': HTMLNbActionsheetElement;
     'nb-affix': HTMLNbAffixElement;
     'nb-badge': HTMLNbBadgeElement;
+    'nb-button-async': HTMLNbButtonAsyncElement;
     'nb-canvas-radar': HTMLNbCanvasRadarElement;
     'ht-emoji': HTMLHtEmojiElement;
     'ht-richtext-parser': HTMLHtRichtextParserElement;
@@ -1486,8 +1437,6 @@ declare global {
     'nb-modal': HTMLNbModalElement;
     'nb-pagination': HTMLNbPaginationElement;
     'nb-datetime-picker': HTMLNbDatetimePickerElement;
-    'nb-pull-to-do': HTMLNbPullToDoElement;
-    'nb-roll-picker': HTMLNbRollPickerElement;
     'nb-search-bar': HTMLNbSearchBarElement;
     'nb-string-limit': HTMLNbStringLimitElement;
     'nb-svg-icon': HTMLNbSvgIconElement;
