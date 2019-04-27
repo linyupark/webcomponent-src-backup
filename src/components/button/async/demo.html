@@ -43,11 +43,20 @@
       <div style="font-size: .32rem">关注</div>
     </nb-button-async>
 
+    <br> <br>
+
+    <nb-button-async no-border class="verify" countdown="30" width="200" height="64" color="#3E86F7" bg="#ffffff">
+      <div style="font-size: .32rem">
+        发送验证码
+      </div>
+    </nb-button-async>
+
   </div>
 
   <script>
     let el = document.querySelector('nb-button-async');
     let follow = document.querySelector('.follow');
+    let verify = document.querySelector('.verify');
     el.addEventListener('tap', ({ detail }) => {
       console.log(el.loading);
       // 模拟处理完异步后
@@ -64,6 +73,16 @@
         follow.bg = "#3E86F7";
         follow.querySelector('div').innerHTML = '已关注';
       }, 1000);
+    });
+    verify.addEventListener('count', ({ detail }) => {
+      if (detail.status === 'start') {
+        verify.querySelector('div').style.color =  '#999';
+        verify.querySelector('div').innerHTML = '<span class="countdown"></span>重新获取';
+        
+      } else {
+        verify.querySelector('div').style.color =  '#3E86F7';
+        verify.querySelector('div').innerHTML = '发送验证码';
+      }
     });
   </script>
 </body>

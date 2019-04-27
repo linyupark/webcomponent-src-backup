@@ -142,6 +142,18 @@ export namespace Components {
     */
     'color': string;
     /**
+    * 如果按钮有倒计时功能该属性设置起始数字
+    */
+    'countdown': number;
+    /**
+    * 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数）
+    */
+    'countdownContainer': string;
+    /**
+    * 倒计时后面追加的单位
+    */
+    'countdownUnit': string;
+    /**
     * 是否处于disable状态
     */
     'disable': boolean;
@@ -157,6 +169,10 @@ export namespace Components {
     * 是否处于loading状态
     */
     'loading': boolean;
+    /**
+    * 没有外边框
+    */
+    'noBorder': boolean;
     /**
     * 圆角
     */
@@ -176,6 +192,18 @@ export namespace Components {
     */
     'color'?: string;
     /**
+    * 如果按钮有倒计时功能该属性设置起始数字
+    */
+    'countdown'?: number;
+    /**
+    * 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数）
+    */
+    'countdownContainer'?: string;
+    /**
+    * 倒计时后面追加的单位
+    */
+    'countdownUnit'?: string;
+    /**
     * 是否处于disable状态
     */
     'disable'?: boolean;
@@ -187,6 +215,14 @@ export namespace Components {
     * 是否处于loading状态
     */
     'loading'?: boolean;
+    /**
+    * 没有外边框
+    */
+    'noBorder'?: boolean;
+    /**
+    * 在进行倒计时
+    */
+    'onCount'?: (event: CustomEvent) => void;
     /**
     * 处理点击
     */
