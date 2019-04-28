@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>图表</title>
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:3333/nb-component/build/nb-component.css">
+  <script src="http://127.0.0.1:3333/nb-component/build/nb-component.js"></script>
+  <style type="text/css">
+
+    html {
+      font-size: 37.5px;
+      width: 10rem;
+    }
+
+    body {
+      width: 10rem;
+      min-height: 100vh;
+    }
+
+    h5 {
+      font-size: .64rem;
+      margin: .5rem 0;
+    }
+
+    .demo p {
+      font-size: 0.426666666666667rem;
+      line-height: 0.666666666666667rem;
+      color: #000;
+      margin: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="demo">
+  <button id="clickThis">点击</button>
+  <!--    <nb-chart id="histogram" width="300" height="300" type="histogram" position="genre*sold">-->
+  <!--    </nb-chart>-->
+  <nb-chart id="line" width="300" height="300" type="line" position="date*value">
+  </nb-chart>
+  <nb-chart id="pie1" width="300" height="300" type="pie" position="cost" legend-sort="type">
+  </nb-chart>
+  <nb-chart id="pie2" width="300" height="300" type="pie" position="cost" legend-sort="type">
+  </nb-chart>
+</div>
+<script>
+  const line = document.querySelector('#line');
+  const pie1 = document.querySelector('#pie1');
+  const pie2 = document.querySelector('#pie2');
+  const nothing = document.querySelector('#clickThis');
+  nothing.addEventListener('click', () => {
+    pie2.xcolor = pie1.xcolor = ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0'];
+    pie1.setAttribute('pie-label', false);
+    pie2.setAttribute('pie-label', true);
+    pie1.setAttribute('legend', true);
+    pie2.setAttribute('legend', false);
+    pie2.chartData = pie1.chartData = [{
+      type: '客户总资产',
+      cost: 500000,
+    }, {
+      type: '总交易量', cost: 500000,
+    }, {
+      type: '净佣金',
+      cost: 500000,
+    }, {
+      type: '净佣金收入',
+      cost: 500000,
+    }];
+    pie1.renderChart();
+    pie2.renderChart();
+    line.chartData = [{
+      date: '2017-06-05',
+      value: 116,
+    }, {
+      date: '2017-06-06',
+      value: 129,
+    }, {
+      date: '2017-06-07',
+      value: 135,
+    }, {
+      date: '2017-06-08',
+      value: 86,
+    }, {
+      date: '2017-06-09',
+      value: 73,
+    }, {
+      date: '2017-06-10',
+      value: 85,
+    }, {
+      date: '2017-06-11',
+      value: 73,
+    }, {
+      date: '2017-06-12',
+      value: 68,
+    }, {
+      date: '2017-06-13',
+      value: 92,
+    }, {date: '2017-06-14', value: 130}, {
+      date: '2017-06-15',
+      value: 245,
+    }, {
+      date: '2017-06-16',
+      value: 139,
+    }, {
+      date: '2017-06-17',
+      value: 115,
+    }, {
+      date: '2017-06-18',
+      value: 111,
+    }, {
+      date: '2017-06-19',
+      value: 309,
+    }];
+    line.padding = ['auto', 'auto', 60, 'auto'];
+    line.xcolor = ['#F03416']
+    line.renderChart();
+  });
+</script>
+</body>
+</html>

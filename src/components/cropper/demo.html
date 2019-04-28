@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>图片裁剪</title>
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:3333/nb-component/build/nb-component.css">
+  <script src="http://127.0.0.1:3333/nb-component/build/nb-component.js"></script>
+  <style type="text/css">
+
+    html {
+      font-size: 37.5px;
+      width: 10rem;
+    }
+
+    body {
+      width: 10rem;
+      min-height: 100vh;
+    }
+
+    .demo {
+      font-size: .46rem;
+      width: 8rem;
+      margin: 1rem;
+    }
+
+    h5 {
+      font-size: .64rem;
+      margin: .5rem 0;
+    }
+
+    .demo p {
+      font-size: 0.426666666666667rem;
+      line-height: 0.666666666666667rem;
+      color: #000;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+<div class="demo">
+  <nb-cropper id="cropper" inputImageRef="#inputImage">
+
+  </nb-cropper>
+  <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*"/>
+  <button id="export">导出</button>
+  <script>
+    const inputImage = document.querySelector('#inputImage');
+    const cropper = document.querySelector('#cropper');
+    const exportBtn = document.querySelector('#export');
+    inputImage.onchange = (e) => {
+      cropper.changeCropper(e.target.files[0]).then(() => {
+        console.log(123);
+      });
+    };
+    exportBtn.addEventListener('click',()=>{
+      cropper.getImgData().then(({data})=>{
+        console.log(data)
+      })
+    })
+  </script>
+</div>
+</body>
+</html>

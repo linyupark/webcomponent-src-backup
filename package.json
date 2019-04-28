@@ -22,6 +22,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "devDependencies": {
+    "@antv/f2": "^3.3.9",
     "@stencil/core": "^0.18.1",
     "@stencil/postcss": "^0.1.0",
     "@stencil/stylus": "^0.1.0",
@@ -29,7 +30,8 @@
     "@types/node": "^10.12.27",
     "cross-env": "^5.2.0",
     "minirefresh": "^2.0.2",
-    "postcss-preset-env": "^6.5.0"
+    "postcss-preset-env": "^6.5.0",
+    "siema": "^1.5.1"
   },
   "license": "MIT"
 }
