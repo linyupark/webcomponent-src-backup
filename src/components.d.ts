@@ -132,6 +132,439 @@ export namespace Components {
     'showZero'?: boolean;
   }
 
+  interface NbButtonAsync {
+    /**
+    * 背景
+    */
+    'bg': string;
+    /**
+    * 字体色
+    */
+    'color': string;
+    /**
+    * 如果按钮有倒计时功能该属性设置起始数字
+    */
+    'countdown': number;
+    /**
+    * 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数）
+    */
+    'countdownContainer': string;
+    /**
+    * 倒计时后面追加的单位
+    */
+    'countdownUnit': string;
+    /**
+    * 是否处于disable状态
+    */
+    'disable': boolean;
+    /**
+    * 点击对应的处理已经完成
+    */
+    'done': () => Promise<boolean>;
+    /**
+    * 高度
+    */
+    'height': number;
+    /**
+    * 是否处于loading状态
+    */
+    'loading': boolean;
+    /**
+    * 没有外边框
+    */
+    'noBorder': boolean;
+    /**
+    * 圆角
+    */
+    'radius': number;
+    /**
+    * 宽度
+    */
+    'width': number;
+  }
+  interface NbButtonAsyncAttributes extends StencilHTMLAttributes {
+    /**
+    * 背景
+    */
+    'bg'?: string;
+    /**
+    * 字体色
+    */
+    'color'?: string;
+    /**
+    * 如果按钮有倒计时功能该属性设置起始数字
+    */
+    'countdown'?: number;
+    /**
+    * 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数）
+    */
+    'countdownContainer'?: string;
+    /**
+    * 倒计时后面追加的单位
+    */
+    'countdownUnit'?: string;
+    /**
+    * 是否处于disable状态
+    */
+    'disable'?: boolean;
+    /**
+    * 高度
+    */
+    'height'?: number;
+    /**
+    * 是否处于loading状态
+    */
+    'loading'?: boolean;
+    /**
+    * 没有外边框
+    */
+    'noBorder'?: boolean;
+    /**
+    * 在进行倒计时
+    */
+    'onCount'?: (event: CustomEvent) => void;
+    /**
+    * 处理点击
+    */
+    'onTap'?: (event: CustomEvent) => void;
+    /**
+    * 圆角
+    */
+    'radius'?: number;
+    /**
+    * 宽度
+    */
+    'width'?: number;
+  }
+
+  interface NbCanvasRadar {
+    /**
+    * 雷达线颜色
+    */
+    'borderColor': string;
+    /**
+    * 字体大小
+    */
+    'fontSize': number;
+    /**
+    * 角顶文案
+    */
+    'labelDataList': string[];
+    /**
+    * 背景色以及分值
+    */
+    'points': any;
+    /**
+    * 半径间隔数
+    */
+    'unit': number;
+    /**
+    * 画布宽高
+    */
+    'wh': [number, number];
+  }
+  interface NbCanvasRadarAttributes extends StencilHTMLAttributes {
+    /**
+    * 雷达线颜色
+    */
+    'borderColor'?: string;
+    /**
+    * 字体大小
+    */
+    'fontSize'?: number;
+    /**
+    * 角顶文案
+    */
+    'labelDataList'?: string[];
+    /**
+    * 背景色以及分值
+    */
+    'points'?: any;
+    /**
+    * 半径间隔数
+    */
+    'unit'?: number;
+    /**
+    * 画布宽高
+    */
+    'wh'?: [number, number];
+  }
+
+  interface NbChart {
+    /**
+    * 改变数据，同时图表刷新
+    */
+    'changeData': (data: any) => Promise<void>;
+    /**
+    * 数据
+    */
+    'chartData': Array<any>;
+    /**
+    * 清除图表内容
+    */
+    'clear': () => Promise<any>;
+    /**
+    * 返回chart实例方便自定义配置，具体配置https://www.yuque.com/antv/f2
+    */
+    'getInstance': () => Promise<any>;
+    /**
+    * canvas高度
+    */
+    'height': number;
+    /**
+    * 图例显示键名
+    */
+    'legendSort': string;
+    /**
+    * canvas padding
+    */
+    'padding': Array<string | number>;
+    /**
+    * 是否显示pieLabel
+    */
+    'pieLabel': boolean;
+    /**
+    * x轴与y轴键名，example:'date*value'
+    */
+    'position': string;
+    /**
+    * 渲染图表
+    */
+    'renderChart': () => Promise<void>;
+    /**
+    * 当修改了配置项时可以重新绘制图表。
+    */
+    'repaint': () => Promise<any>;
+    /**
+    * 图表类型
+    */
+    'type': 'pie' | 'line';
+    /**
+    * canvas宽度
+    */
+    'width': number;
+    /**
+    * x轴刻度个数
+    */
+    'xTickCount': number;
+    /**
+    * 数据块颜色列表
+    */
+    'xcolor': Array<string>;
+  }
+  interface NbChartAttributes extends StencilHTMLAttributes {
+    /**
+    * 数据
+    */
+    'chartData'?: Array<any>;
+    /**
+    * canvas高度
+    */
+    'height'?: number;
+    /**
+    * 图例显示键名
+    */
+    'legendSort'?: string;
+    /**
+    * canvas padding
+    */
+    'padding'?: Array<string | number>;
+    /**
+    * 是否显示pieLabel
+    */
+    'pieLabel'?: boolean;
+    /**
+    * x轴与y轴键名，example:'date*value'
+    */
+    'position'?: string;
+    /**
+    * 图表类型
+    */
+    'type'?: 'pie' | 'line';
+    /**
+    * canvas宽度
+    */
+    'width'?: number;
+    /**
+    * x轴刻度个数
+    */
+    'xTickCount'?: number;
+    /**
+    * 数据块颜色列表
+    */
+    'xcolor'?: Array<string>;
+  }
+
+  interface NbCropper {
+    /**
+    * 裁切比例
+    */
+    'aspectRatio': number;
+    /**
+    * 上传图片
+    */
+    'changeCropper': (file: File) => Promise<void>;
+    /**
+    * 允许通过拖动调整裁剪框的大小
+    */
+    'cropBoxResizable': boolean;
+    /**
+    * 获取base64图片数据
+    */
+    'getImgData': () => Promise<{ data: any; }>;
+    /**
+    * div最小高度
+    */
+    'minContainerHeight': number;
+    /**
+    * div最小宽度
+    */
+    'minContainerWidth': number;
+  }
+  interface NbCropperAttributes extends StencilHTMLAttributes {
+    /**
+    * 裁切比例
+    */
+    'aspectRatio'?: number;
+    /**
+    * 允许通过拖动调整裁剪框的大小
+    */
+    'cropBoxResizable'?: boolean;
+    /**
+    * div最小高度
+    */
+    'minContainerHeight'?: number;
+    /**
+    * div最小宽度
+    */
+    'minContainerWidth'?: number;
+  }
+
+  interface HtEmoji {
+    /**
+    * 表情分组
+    */
+    'group': string;
+    /**
+    * 表情名称
+    */
+    'type': string;
+  }
+  interface HtEmojiAttributes extends StencilHTMLAttributes {
+    /**
+    * 表情分组
+    */
+    'group'?: string;
+    /**
+    * 表情名称
+    */
+    'type'?: string;
+  }
+
+  interface HtRichtextParser {
+    /**
+    * 调试模式
+    */
+    'debug'?: false;
+  }
+  interface HtRichtextParserAttributes extends StencilHTMLAttributes {
+    /**
+    * 调试模式
+    */
+    'debug'?: false;
+  }
+
+  interface HtStock {
+    /**
+    * 详情对应id
+    */
+    'detailId': string;
+    /**
+    * 跳转链接时阻止冒泡
+    */
+    'goLink': (event: any) => void;
+    /**
+    * 头部标题
+    */
+    'headTitle': string;
+  }
+  interface HtStockAttributes extends StencilHTMLAttributes {
+    /**
+    * 详情对应id
+    */
+    'detailId'?: string;
+    /**
+    * 头部标题
+    */
+    'headTitle'?: string;
+  }
+
+  interface HtSubject {
+    /**
+    * 详情对应id
+    */
+    'detailId': string;
+    /**
+    * 跳转链接时阻止冒泡
+    */
+    'goLink': (event: any) => void;
+    /**
+    * 头部标题
+    */
+    'headTitle': string;
+    /**
+    * 摘要
+    */
+    'summary': string;
+    /**
+    * 类型：subject1:专题/subject2:资讯
+    */
+    'type': string;
+  }
+  interface HtSubjectAttributes extends StencilHTMLAttributes {
+    /**
+    * 详情对应id
+    */
+    'detailId'?: string;
+    /**
+    * 头部标题
+    */
+    'headTitle'?: string;
+    /**
+    * 摘要
+    */
+    'summary'?: string;
+    /**
+    * 类型：subject1:专题/subject2:资讯
+    */
+    'type'?: string;
+  }
+
+  interface HtTopic {
+    /**
+    * 详情对应id
+    */
+    'detailId': string;
+    /**
+    * 跳转链接时阻止冒泡
+    */
+    'goLink': (event: any) => void;
+    /**
+    * 头部标题
+    */
+    'headTitle': string;
+  }
+  interface HtTopicAttributes extends StencilHTMLAttributes {
+    /**
+    * 详情对应id
+    */
+    'detailId'?: string;
+    /**
+    * 头部标题
+    */
+    'headTitle'?: string;
+  }
+
   interface NbListItem {
     /**
     * 下边框, 0则不显示
@@ -383,6 +816,121 @@ export namespace Components {
     'visible'?: boolean;
   }
 
+  interface NbPagination {
+    /**
+    * 当只有一页的时候自动隐藏
+    */
+    'autoHide': boolean;
+    /**
+    * 当前页面
+    */
+    'current': number;
+    /**
+    * 当分页太多时候限制前后显示页数
+    */
+    'limitPage': 4 | 6 | 8;
+    /**
+    * 每页条数
+    */
+    'pagesize': number;
+    /**
+    * 总数据条数
+    */
+    'total': number;
+  }
+  interface NbPaginationAttributes extends StencilHTMLAttributes {
+    /**
+    * 当只有一页的时候自动隐藏
+    */
+    'autoHide'?: boolean;
+    /**
+    * 当前页面
+    */
+    'current'?: number;
+    /**
+    * 当分页太多时候限制前后显示页数
+    */
+    'limitPage'?: 4 | 6 | 8;
+    /**
+    * 当前页发生变化
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 每页条数
+    */
+    'pagesize'?: number;
+    /**
+    * 总数据条数
+    */
+    'total'?: number;
+  }
+
+  interface NbDatetimePicker {
+    /**
+    * 当前选中时间 new Date(2048, 9, 24, 5, 12) or '2048-10-24 05:12'
+    */
+    'date'?: any;
+    /**
+    * 触发选择显示开关的对象，一般是 input 框，可以是选择器字符串
+    */
+    'for': string;
+    /**
+    * 日期时间格式设置 YYYY: 4 digits year with leading zero YYY: 3 digits year with leading zero YY: 2 digits year with leading zero and be converted to a year near 2000 Y: Years with any number of digits and sign MMMM: Month name MMM: Short month name MM: Month number with leading zero M: Month number DD: Day of month with leading zero D: Day of month HH: Hours with leading zero H: Hours mm: Minutes with leading zero m: Minutes ss: Seconds with leading zero s: Seconds SSS: Milliseconds with leading zero SS: Milliseconds with leading zero S: Milliseconds
+    */
+    'format': string;
+    /**
+    * 获取实例化选择器 之后可以使用API中对应的方法 show() how the picker. hide() Hide the picker. pick() Pick the current date to the target element. getDate([formatted: 是否使用格式化]) Get the current date. setDate(date: Date) Override the current date with a new date. update() Update the picker with the current the element value / text. reset() Reset the picker and the element value / text. parseDate(date) @return {Date} Parse a date string with the set date format. formatDate(date) @return {String} Format a date object to a string with the set date format. destroy() Destroy the picker and remove the instance from the target element.
+    */
+    'getPicker': () => Promise<any>;
+    /**
+    * 每个选项上是否显示提示性文字 选项可见行数
+    */
+    'rows': number;
+    /**
+    * 取消按钮文案
+    */
+    'textCancel': string;
+    /**
+    * 确定按钮文案
+    */
+    'textConfirm': string;
+    /**
+    * 标题内容
+    */
+    'textTitle': string;
+  }
+  interface NbDatetimePickerAttributes extends StencilHTMLAttributes {
+    /**
+    * 当前选中时间 new Date(2048, 9, 24, 5, 12) or '2048-10-24 05:12'
+    */
+    'date'?: any;
+    /**
+    * 触发选择显示开关的对象，一般是 input 框，可以是选择器字符串
+    */
+    'for'?: string;
+    /**
+    * 日期时间格式设置 YYYY: 4 digits year with leading zero YYY: 3 digits year with leading zero YY: 2 digits year with leading zero and be converted to a year near 2000 Y: Years with any number of digits and sign MMMM: Month name MMM: Short month name MM: Month number with leading zero M: Month number DD: Day of month with leading zero D: Day of month HH: Hours with leading zero H: Hours mm: Minutes with leading zero m: Minutes ss: Seconds with leading zero s: Seconds SSS: Milliseconds with leading zero SS: Milliseconds with leading zero S: Milliseconds
+    */
+    'format'?: string;
+    'onReady'?: (event: CustomEvent) => void;
+    /**
+    * 每个选项上是否显示提示性文字 选项可见行数
+    */
+    'rows'?: number;
+    /**
+    * 取消按钮文案
+    */
+    'textCancel'?: string;
+    /**
+    * 确定按钮文案
+    */
+    'textConfirm'?: string;
+    /**
+    * 标题内容
+    */
+    'textTitle'?: string;
+  }
+
   interface NbSearchBar {
     /**
     * 取消搜索操作
@@ -452,6 +1000,149 @@ export namespace Components {
     'value'?: string;
   }
 
+  interface NbStringLimit {
+    /**
+    * 选择限制长度的模式
+    */
+    'mode': 'line' | 'length';
+    /**
+    * 针对模式设置数值 line 代表行数， length 代表长度
+    */
+    'number': number;
+  }
+  interface NbStringLimitAttributes extends StencilHTMLAttributes {
+    /**
+    * 选择限制长度的模式
+    */
+    'mode'?: 'line' | 'length';
+    /**
+    * 针对模式设置数值 line 代表行数， length 代表长度
+    */
+    'number'?: number;
+  }
+
+  interface NbSvgIcon {
+    /**
+    * 加入动画名称
+    */
+    'anim': 'rotate' | '';
+    /**
+    * svg 大小
+    */
+    'size': 'xs' | 's' | 'm' | 'l' | 'xl';
+    /**
+    * type 图标类型，不使用内置的话不需要设置
+    */
+    'type'?: string;
+  }
+  interface NbSvgIconAttributes extends StencilHTMLAttributes {
+    /**
+    * 加入动画名称
+    */
+    'anim'?: 'rotate' | '';
+    /**
+    * svg 大小
+    */
+    'size'?: 'xs' | 's' | 'm' | 'l' | 'xl';
+    /**
+    * type 图标类型，不使用内置的话不需要设置
+    */
+    'type'?: string;
+  }
+
+  interface NbSwiper {
+    /**
+    * 自动播放间隔
+    */
+    'autoDelay': number;
+    /**
+    * 使用拖动和触摸滑动
+    */
+    'draggable': boolean;
+    /**
+    * 幻灯片转换持续时间
+    */
+    'duration': number;
+    /**
+    * 动画,类似CSS transition-timing-function。
+    */
+    'easing': string;
+    /**
+    * 是否循环
+    */
+    'loop': boolean;
+    /**
+    * 是否允许拖动以移动多个幻灯片
+    */
+    'multipleDrag': boolean;
+    /**
+    * 要显示幻灯片的数量 object{      800: 2, // 2 items 超过 800px      1240: 3 // 3 items 超过 1240px }
+    */
+    'perPage': number | object;
+    /**
+    * 是否从右往左
+    */
+    'rtl': boolean;
+    /**
+    * 起始幻灯片的索引
+    */
+    'startIndex': number;
+    /**
+    * 触摸和鼠标拖动阈值（以px为单位）
+    */
+    'threshold': number;
+  }
+  interface NbSwiperAttributes extends StencilHTMLAttributes {
+    /**
+    * 自动播放间隔
+    */
+    'autoDelay'?: number;
+    /**
+    * 使用拖动和触摸滑动
+    */
+    'draggable'?: boolean;
+    /**
+    * 幻灯片转换持续时间
+    */
+    'duration'?: number;
+    /**
+    * 动画,类似CSS transition-timing-function。
+    */
+    'easing'?: string;
+    /**
+    * 是否循环
+    */
+    'loop'?: boolean;
+    /**
+    * 是否允许拖动以移动多个幻灯片
+    */
+    'multipleDrag'?: boolean;
+    /**
+    * 当前index发生变化
+    */
+    'onOnChange'?: (event: CustomEvent) => void;
+    /**
+    * 初始化swiper
+    */
+    'onOnInit'?: (event: CustomEvent) => void;
+    /**
+    * 要显示幻灯片的数量 object{      800: 2, // 2 items 超过 800px      1240: 3 // 3 items 超过 1240px }
+    */
+    'perPage'?: number | object;
+    /**
+    * 是否从右往左
+    */
+    'rtl'?: boolean;
+    /**
+    * 起始幻灯片的索引
+    */
+    'startIndex'?: number;
+    /**
+    * 触摸和鼠标拖动阈值（以px为单位）
+    */
+    'threshold'?: number;
+  }
+
   interface NbSwitch {
     /**
     * 是否默认选中
@@ -499,6 +1190,114 @@ export namespace Components {
     * 宽度
     */
     'w'?: number;
+  }
+
+  interface NbTabSlide {
+    /**
+    * tab 高度
+    */
+    'height': number;
+    /**
+    * 当前选中的 index
+    */
+    'index': number;
+    /**
+    * 滑动块的位置，默认：底部
+    */
+    'position': 'bottom' | 'top';
+    /**
+    * tab 的宽度
+    */
+    'width': number;
+  }
+  interface NbTabSlideAttributes extends StencilHTMLAttributes {
+    /**
+    * tab 高度
+    */
+    'height'?: number;
+    /**
+    * 当前选中的 index
+    */
+    'index'?: number;
+    /**
+    * 当 tab 切换发生变化
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 滑动块的位置，默认：底部
+    */
+    'position'?: 'bottom' | 'top';
+    /**
+    * tab 的宽度
+    */
+    'width'?: number;
+  }
+
+  interface NbTagInputSet {
+    /**
+    * 手动添加标签
+    */
+    'addTag': (tagString: string) => Promise<void>;
+    /**
+    * 获取当前标签
+    */
+    'getTags': () => Promise<any>;
+    /**
+    * 输入框提示信息
+    */
+    'placeholder': string;
+    /**
+    * 当前选中的tag标签数组
+    */
+    'tags': any;
+  }
+  interface NbTagInputSetAttributes extends StencilHTMLAttributes {
+    /**
+    * 标签数据发生变化
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 输入框提示信息
+    */
+    'placeholder'?: string;
+    /**
+    * 当前选中的tag标签数组
+    */
+    'tags'?: any;
+  }
+
+  interface NbLimitTextarea {
+    /**
+    * 获取内容
+    */
+    'getContent': () => Promise<any>;
+    /**
+    * 输入框高度
+    */
+    'height': number;
+    /**
+    * 最大长度
+    */
+    'limit': number;
+    /**
+    * placeholder 提示信息
+    */
+    'placeholder': string;
+  }
+  interface NbLimitTextareaAttributes extends StencilHTMLAttributes {
+    /**
+    * 输入框高度
+    */
+    'height'?: number;
+    /**
+    * 最大长度
+    */
+    'limit'?: number;
+    'onReady'?: (event: CustomEvent) => void;
+    /**
+    * placeholder 提示信息
+    */
+    'placeholder'?: string;
   }
 
   interface NbToast {
@@ -550,6 +1349,63 @@ export namespace Components {
     'visible'?: boolean;
   }
 
+  interface NbUploadSimpleImage {
+    /**
+    * 获取预览图片合集
+    */
+    'getImages': () => Promise<any[]>;
+    /**
+    * 图片最大尺寸单位（KB）
+    */
+    'imageSize': number;
+    /**
+    * 最多能上传几张
+    */
+    'maxLength': number;
+    /**
+    * 预览图的尺寸
+    */
+    'previewSize': number;
+    /**
+    * 将原图缩放至750宽度*多少倍
+    */
+    'rate': number;
+    /**
+    * 提示上传按钮的文案
+    */
+    'uploadText': string;
+  }
+  interface NbUploadSimpleImageAttributes extends StencilHTMLAttributes {
+    /**
+    * 图片最大尺寸单位（KB）
+    */
+    'imageSize'?: number;
+    /**
+    * 最多能上传几张
+    */
+    'maxLength'?: number;
+    /**
+    * 触发图片选择改动
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 当发生错误
+    */
+    'onError'?: (event: CustomEvent) => void;
+    /**
+    * 预览图的尺寸
+    */
+    'previewSize'?: number;
+    /**
+    * 将原图缩放至750宽度*多少倍
+    */
+    'rate'?: number;
+    /**
+    * 提示上传按钮的文案
+    */
+    'uploadText'?: string;
+  }
+
   interface NbVscrollNav {
     /**
     * 定义滚动元素 id 的前置与选中的keyword 合并成完整的 id eg：'vscroll-' + 'A' -> id='vscroll-A'
@@ -593,14 +1449,32 @@ declare global {
     'NbActionsheet': Components.NbActionsheet;
     'NbAffix': Components.NbAffix;
     'NbBadge': Components.NbBadge;
+    'NbButtonAsync': Components.NbButtonAsync;
+    'NbCanvasRadar': Components.NbCanvasRadar;
+    'NbChart': Components.NbChart;
+    'NbCropper': Components.NbCropper;
+    'HtEmoji': Components.HtEmoji;
+    'HtRichtextParser': Components.HtRichtextParser;
+    'HtStock': Components.HtStock;
+    'HtSubject': Components.HtSubject;
+    'HtTopic': Components.HtTopic;
     'NbListItem': Components.NbListItem;
     'NbList': Components.NbList;
     'NbMarquee': Components.NbMarquee;
     'NbRefresh': Components.NbRefresh;
     'NbModal': Components.NbModal;
+    'NbPagination': Components.NbPagination;
+    'NbDatetimePicker': Components.NbDatetimePicker;
     'NbSearchBar': Components.NbSearchBar;
+    'NbStringLimit': Components.NbStringLimit;
+    'NbSvgIcon': Components.NbSvgIcon;
+    'NbSwiper': Components.NbSwiper;
     'NbSwitch': Components.NbSwitch;
+    'NbTabSlide': Components.NbTabSlide;
+    'NbTagInputSet': Components.NbTagInputSet;
+    'NbLimitTextarea': Components.NbLimitTextarea;
     'NbToast': Components.NbToast;
+    'NbUploadSimpleImage': Components.NbUploadSimpleImage;
     'NbVscrollNav': Components.NbVscrollNav;
   }
 
@@ -608,14 +1482,32 @@ declare global {
     'nb-actionsheet': Components.NbActionsheetAttributes;
     'nb-affix': Components.NbAffixAttributes;
     'nb-badge': Components.NbBadgeAttributes;
+    'nb-button-async': Components.NbButtonAsyncAttributes;
+    'nb-canvas-radar': Components.NbCanvasRadarAttributes;
+    'nb-chart': Components.NbChartAttributes;
+    'nb-cropper': Components.NbCropperAttributes;
+    'ht-emoji': Components.HtEmojiAttributes;
+    'ht-richtext-parser': Components.HtRichtextParserAttributes;
+    'ht-stock': Components.HtStockAttributes;
+    'ht-subject': Components.HtSubjectAttributes;
+    'ht-topic': Components.HtTopicAttributes;
     'nb-list-item': Components.NbListItemAttributes;
     'nb-list': Components.NbListAttributes;
     'nb-marquee': Components.NbMarqueeAttributes;
     'nb-refresh': Components.NbRefreshAttributes;
     'nb-modal': Components.NbModalAttributes;
+    'nb-pagination': Components.NbPaginationAttributes;
+    'nb-datetime-picker': Components.NbDatetimePickerAttributes;
     'nb-search-bar': Components.NbSearchBarAttributes;
+    'nb-string-limit': Components.NbStringLimitAttributes;
+    'nb-svg-icon': Components.NbSvgIconAttributes;
+    'nb-swiper': Components.NbSwiperAttributes;
     'nb-switch': Components.NbSwitchAttributes;
+    'nb-tab-slide': Components.NbTabSlideAttributes;
+    'nb-tag-input-set': Components.NbTagInputSetAttributes;
+    'nb-limit-textarea': Components.NbLimitTextareaAttributes;
     'nb-toast': Components.NbToastAttributes;
+    'nb-upload-simple-image': Components.NbUploadSimpleImageAttributes;
     'nb-vscroll-nav': Components.NbVscrollNavAttributes;
   }
 
@@ -636,6 +1528,60 @@ declare global {
   var HTMLNbBadgeElement: {
     prototype: HTMLNbBadgeElement;
     new (): HTMLNbBadgeElement;
+  };
+
+  interface HTMLNbButtonAsyncElement extends Components.NbButtonAsync, HTMLStencilElement {}
+  var HTMLNbButtonAsyncElement: {
+    prototype: HTMLNbButtonAsyncElement;
+    new (): HTMLNbButtonAsyncElement;
+  };
+
+  interface HTMLNbCanvasRadarElement extends Components.NbCanvasRadar, HTMLStencilElement {}
+  var HTMLNbCanvasRadarElement: {
+    prototype: HTMLNbCanvasRadarElement;
+    new (): HTMLNbCanvasRadarElement;
+  };
+
+  interface HTMLNbChartElement extends Components.NbChart, HTMLStencilElement {}
+  var HTMLNbChartElement: {
+    prototype: HTMLNbChartElement;
+    new (): HTMLNbChartElement;
+  };
+
+  interface HTMLNbCropperElement extends Components.NbCropper, HTMLStencilElement {}
+  var HTMLNbCropperElement: {
+    prototype: HTMLNbCropperElement;
+    new (): HTMLNbCropperElement;
+  };
+
+  interface HTMLHtEmojiElement extends Components.HtEmoji, HTMLStencilElement {}
+  var HTMLHtEmojiElement: {
+    prototype: HTMLHtEmojiElement;
+    new (): HTMLHtEmojiElement;
+  };
+
+  interface HTMLHtRichtextParserElement extends Components.HtRichtextParser, HTMLStencilElement {}
+  var HTMLHtRichtextParserElement: {
+    prototype: HTMLHtRichtextParserElement;
+    new (): HTMLHtRichtextParserElement;
+  };
+
+  interface HTMLHtStockElement extends Components.HtStock, HTMLStencilElement {}
+  var HTMLHtStockElement: {
+    prototype: HTMLHtStockElement;
+    new (): HTMLHtStockElement;
+  };
+
+  interface HTMLHtSubjectElement extends Components.HtSubject, HTMLStencilElement {}
+  var HTMLHtSubjectElement: {
+    prototype: HTMLHtSubjectElement;
+    new (): HTMLHtSubjectElement;
+  };
+
+  interface HTMLHtTopicElement extends Components.HtTopic, HTMLStencilElement {}
+  var HTMLHtTopicElement: {
+    prototype: HTMLHtTopicElement;
+    new (): HTMLHtTopicElement;
   };
 
   interface HTMLNbListItemElement extends Components.NbListItem, HTMLStencilElement {}
@@ -668,10 +1614,40 @@ declare global {
     new (): HTMLNbModalElement;
   };
 
+  interface HTMLNbPaginationElement extends Components.NbPagination, HTMLStencilElement {}
+  var HTMLNbPaginationElement: {
+    prototype: HTMLNbPaginationElement;
+    new (): HTMLNbPaginationElement;
+  };
+
+  interface HTMLNbDatetimePickerElement extends Components.NbDatetimePicker, HTMLStencilElement {}
+  var HTMLNbDatetimePickerElement: {
+    prototype: HTMLNbDatetimePickerElement;
+    new (): HTMLNbDatetimePickerElement;
+  };
+
   interface HTMLNbSearchBarElement extends Components.NbSearchBar, HTMLStencilElement {}
   var HTMLNbSearchBarElement: {
     prototype: HTMLNbSearchBarElement;
     new (): HTMLNbSearchBarElement;
+  };
+
+  interface HTMLNbStringLimitElement extends Components.NbStringLimit, HTMLStencilElement {}
+  var HTMLNbStringLimitElement: {
+    prototype: HTMLNbStringLimitElement;
+    new (): HTMLNbStringLimitElement;
+  };
+
+  interface HTMLNbSvgIconElement extends Components.NbSvgIcon, HTMLStencilElement {}
+  var HTMLNbSvgIconElement: {
+    prototype: HTMLNbSvgIconElement;
+    new (): HTMLNbSvgIconElement;
+  };
+
+  interface HTMLNbSwiperElement extends Components.NbSwiper, HTMLStencilElement {}
+  var HTMLNbSwiperElement: {
+    prototype: HTMLNbSwiperElement;
+    new (): HTMLNbSwiperElement;
   };
 
   interface HTMLNbSwitchElement extends Components.NbSwitch, HTMLStencilElement {}
@@ -680,10 +1656,34 @@ declare global {
     new (): HTMLNbSwitchElement;
   };
 
+  interface HTMLNbTabSlideElement extends Components.NbTabSlide, HTMLStencilElement {}
+  var HTMLNbTabSlideElement: {
+    prototype: HTMLNbTabSlideElement;
+    new (): HTMLNbTabSlideElement;
+  };
+
+  interface HTMLNbTagInputSetElement extends Components.NbTagInputSet, HTMLStencilElement {}
+  var HTMLNbTagInputSetElement: {
+    prototype: HTMLNbTagInputSetElement;
+    new (): HTMLNbTagInputSetElement;
+  };
+
+  interface HTMLNbLimitTextareaElement extends Components.NbLimitTextarea, HTMLStencilElement {}
+  var HTMLNbLimitTextareaElement: {
+    prototype: HTMLNbLimitTextareaElement;
+    new (): HTMLNbLimitTextareaElement;
+  };
+
   interface HTMLNbToastElement extends Components.NbToast, HTMLStencilElement {}
   var HTMLNbToastElement: {
     prototype: HTMLNbToastElement;
     new (): HTMLNbToastElement;
+  };
+
+  interface HTMLNbUploadSimpleImageElement extends Components.NbUploadSimpleImage, HTMLStencilElement {}
+  var HTMLNbUploadSimpleImageElement: {
+    prototype: HTMLNbUploadSimpleImageElement;
+    new (): HTMLNbUploadSimpleImageElement;
   };
 
   interface HTMLNbVscrollNavElement extends Components.NbVscrollNav, HTMLStencilElement {}
@@ -696,14 +1696,32 @@ declare global {
     'nb-actionsheet': HTMLNbActionsheetElement
     'nb-affix': HTMLNbAffixElement
     'nb-badge': HTMLNbBadgeElement
+    'nb-button-async': HTMLNbButtonAsyncElement
+    'nb-canvas-radar': HTMLNbCanvasRadarElement
+    'nb-chart': HTMLNbChartElement
+    'nb-cropper': HTMLNbCropperElement
+    'ht-emoji': HTMLHtEmojiElement
+    'ht-richtext-parser': HTMLHtRichtextParserElement
+    'ht-stock': HTMLHtStockElement
+    'ht-subject': HTMLHtSubjectElement
+    'ht-topic': HTMLHtTopicElement
     'nb-list-item': HTMLNbListItemElement
     'nb-list': HTMLNbListElement
     'nb-marquee': HTMLNbMarqueeElement
     'nb-refresh': HTMLNbRefreshElement
     'nb-modal': HTMLNbModalElement
+    'nb-pagination': HTMLNbPaginationElement
+    'nb-datetime-picker': HTMLNbDatetimePickerElement
     'nb-search-bar': HTMLNbSearchBarElement
+    'nb-string-limit': HTMLNbStringLimitElement
+    'nb-svg-icon': HTMLNbSvgIconElement
+    'nb-swiper': HTMLNbSwiperElement
     'nb-switch': HTMLNbSwitchElement
+    'nb-tab-slide': HTMLNbTabSlideElement
+    'nb-tag-input-set': HTMLNbTagInputSetElement
+    'nb-limit-textarea': HTMLNbLimitTextareaElement
     'nb-toast': HTMLNbToastElement
+    'nb-upload-simple-image': HTMLNbUploadSimpleImageElement
     'nb-vscroll-nav': HTMLNbVscrollNavElement
   }
 
@@ -711,14 +1729,32 @@ declare global {
     'nb-actionsheet': HTMLNbActionsheetElement;
     'nb-affix': HTMLNbAffixElement;
     'nb-badge': HTMLNbBadgeElement;
+    'nb-button-async': HTMLNbButtonAsyncElement;
+    'nb-canvas-radar': HTMLNbCanvasRadarElement;
+    'nb-chart': HTMLNbChartElement;
+    'nb-cropper': HTMLNbCropperElement;
+    'ht-emoji': HTMLHtEmojiElement;
+    'ht-richtext-parser': HTMLHtRichtextParserElement;
+    'ht-stock': HTMLHtStockElement;
+    'ht-subject': HTMLHtSubjectElement;
+    'ht-topic': HTMLHtTopicElement;
     'nb-list-item': HTMLNbListItemElement;
     'nb-list': HTMLNbListElement;
     'nb-marquee': HTMLNbMarqueeElement;
     'nb-refresh': HTMLNbRefreshElement;
     'nb-modal': HTMLNbModalElement;
+    'nb-pagination': HTMLNbPaginationElement;
+    'nb-datetime-picker': HTMLNbDatetimePickerElement;
     'nb-search-bar': HTMLNbSearchBarElement;
+    'nb-string-limit': HTMLNbStringLimitElement;
+    'nb-svg-icon': HTMLNbSvgIconElement;
+    'nb-swiper': HTMLNbSwiperElement;
     'nb-switch': HTMLNbSwitchElement;
+    'nb-tab-slide': HTMLNbTabSlideElement;
+    'nb-tag-input-set': HTMLNbTagInputSetElement;
+    'nb-limit-textarea': HTMLNbLimitTextareaElement;
     'nb-toast': HTMLNbToastElement;
+    'nb-upload-simple-image': HTMLNbUploadSimpleImageElement;
     'nb-vscroll-nav': HTMLNbVscrollNavElement;
   }
 

@@ -1,5 +1,5 @@
 import {
-  Component, Element, Event, EventEmitter, Method, Prop,
+  Component, Element, Method, Prop,
   // Prop,
   // State,
   // Event,
@@ -19,9 +19,11 @@ import Cropper from './cropper.esm';
   shadow: true,
 })
 export class NbCropper {
-  private Cropper;
+  Cropper;
+  /**
+   * 根
+   */
   @Element() el: HTMLElement;
-  @Event() ready: EventEmitter;
 
   /**
    * 获取base64图片数据
@@ -32,9 +34,9 @@ export class NbCropper {
     if (this.Cropper) {
       let result = this.Cropper.getCroppedCanvas();
       let href = result.toDataURL(this.uploadedImageType);
-      return {data:href}
+      return {data: href};
     }
-    return {data:''}
+    return {data: ''};
   }
 
   /**
@@ -42,7 +44,7 @@ export class NbCropper {
    * @param {File} file 图片文件
    */
   @Method()
-  async changeCropper(file:File) {
+  async changeCropper(file: File) {
     let URL = window.URL;
     this.image.src = URL.createObjectURL(file);
     this.uploadedImageType = file.type;
@@ -50,41 +52,45 @@ export class NbCropper {
     this.Cropper = new Cropper(this.image, this.options);
   }
 
-  @Prop() aspectRatio: number = 15;
+  /**
+   * 裁切比例
+   */
+  @Prop() aspectRatio: number = 1 / 1;
+  /**
+   * div最小宽度
+   */
   @Prop() minContainerWidth: number = 375;
+  /**
+   * div最小高度
+   */
   @Prop() minContainerHeight: number = 450;
-  @Prop() naturalWidth: number = 1;
-  @Prop() naturalHeight: number = 1;
-  @Prop() inputImageRef: string;
-  @Prop() file: string;
-  @Prop() cropBoxResizable: boolean=false;
-  @Prop() zoomable: boolean=false;
-  @Prop() scalable: boolean=false;
-  private image: HTMLImageElement;
-  private options: any;
+  /**
+   * 允许通过拖动调整裁剪框的大小
+   */
+  @Prop() cropBoxResizable: boolean = false;
+
+  options: any;
   uploadedImageType: string;
+  image: HTMLImageElement;
 
   componentDidLoad() {
     const container = this.el.shadowRoot.querySelector('.img-container');
-    this.image = container.querySelector('#heihei');
+    this.image = container.querySelector('.image');
     this.options = {
-      aspectRatio: this.naturalWidth / this.naturalHeight,
+      aspectRatio: this.aspectRatio,
       minContainerWidth: this.minContainerWidth,
       minContainerHeight: this.minContainerHeight,
-      cropBoxResizable:this.cropBoxResizable,
-      zoomable:this.zoomable,
-      scalable:this.scalable,
+      cropBoxResizable: this.cropBoxResizable,
+      zoomable: false,
+      scalable: false,
     };
     this.Cropper = new Cropper(this.image, this.options);
-    this.ready.emit({
-      cropper: this.Cropper,
-    });
   }
 
   render() {
     return (
       <div class="img-container">
-        <img id="heihei" class="hide" src="" alt="Picture"/>
+        <img class="hide image" src="" alt="Picture"/>
         <slot/>
       </div>
     );
