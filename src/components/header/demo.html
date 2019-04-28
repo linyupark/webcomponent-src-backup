@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>通用顶部导航</title>
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:3333/nb-component/build/nb-component.css">
+  <script src="http://127.0.0.1:3333/nb-component/build/nb-component.js"></script>
+  <style type="text/css">
+    html {
+      font-size: 37.5px;
+    }
+
+    body {
+      width: 10rem;
+      min-height: 100vh;
+    }
+
+    .demo {
+      font-size: .46rem;
+      height: 200vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo">
+    <!-- <nb-header-nav>
+      <div slot="left">返回</div>
+      <div slot="title">标题</div>
+      <div slot="right">操作</div>
+    </nb-header-nav> -->
+    <nb-header-nav title-position="left">
+      <div slot="title">标题</div>
+      <div slot="right">操作</div>
+    </nb-header-nav>
+  </div>
+
+  <script>
+    const el = document.querySelector('nb-header-nav');
+    el.addEventListener('tap', ({ detail }) => {
+      console.log(detail.position);
+    });
+  </script>
+</body>
+
+</html>
