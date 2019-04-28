@@ -440,6 +440,63 @@ export namespace Components {
     'minContainerWidth'?: number;
   }
 
+  interface NbHeaderNav {
+    /**
+    * 是否固定悬浮在顶部 z-index 值
+    */
+    'fixed': number;
+    /**
+    * 有下划线
+    */
+    'line': boolean;
+    /**
+    * 左右间距
+    */
+    'space': number;
+    /**
+    * 设置样式合集
+    */
+    'styles': any;
+    /**
+    * 标题显示位置
+    */
+    'titlePosition': 'left' | 'center';
+    /**
+    * 是否显示
+    */
+    'visible': boolean;
+  }
+  interface NbHeaderNavAttributes extends StencilHTMLAttributes {
+    /**
+    * 是否固定悬浮在顶部 z-index 值
+    */
+    'fixed'?: number;
+    /**
+    * 有下划线
+    */
+    'line'?: boolean;
+    /**
+    * 处理点击事件
+    */
+    'onTap'?: (event: CustomEvent) => void;
+    /**
+    * 左右间距
+    */
+    'space'?: number;
+    /**
+    * 设置样式合集
+    */
+    'styles'?: any;
+    /**
+    * 标题显示位置
+    */
+    'titlePosition'?: 'left' | 'center';
+    /**
+    * 是否显示
+    */
+    'visible'?: boolean;
+  }
+
   interface HtEmoji {
     /**
     * 表情分组
@@ -1453,6 +1510,7 @@ declare global {
     'NbCanvasRadar': Components.NbCanvasRadar;
     'NbChart': Components.NbChart;
     'NbCropper': Components.NbCropper;
+    'NbHeaderNav': Components.NbHeaderNav;
     'HtEmoji': Components.HtEmoji;
     'HtRichtextParser': Components.HtRichtextParser;
     'HtStock': Components.HtStock;
@@ -1486,6 +1544,7 @@ declare global {
     'nb-canvas-radar': Components.NbCanvasRadarAttributes;
     'nb-chart': Components.NbChartAttributes;
     'nb-cropper': Components.NbCropperAttributes;
+    'nb-header-nav': Components.NbHeaderNavAttributes;
     'ht-emoji': Components.HtEmojiAttributes;
     'ht-richtext-parser': Components.HtRichtextParserAttributes;
     'ht-stock': Components.HtStockAttributes;
@@ -1552,6 +1611,12 @@ declare global {
   var HTMLNbCropperElement: {
     prototype: HTMLNbCropperElement;
     new (): HTMLNbCropperElement;
+  };
+
+  interface HTMLNbHeaderNavElement extends Components.NbHeaderNav, HTMLStencilElement {}
+  var HTMLNbHeaderNavElement: {
+    prototype: HTMLNbHeaderNavElement;
+    new (): HTMLNbHeaderNavElement;
   };
 
   interface HTMLHtEmojiElement extends Components.HtEmoji, HTMLStencilElement {}
@@ -1700,6 +1765,7 @@ declare global {
     'nb-canvas-radar': HTMLNbCanvasRadarElement
     'nb-chart': HTMLNbChartElement
     'nb-cropper': HTMLNbCropperElement
+    'nb-header-nav': HTMLNbHeaderNavElement
     'ht-emoji': HTMLHtEmojiElement
     'ht-richtext-parser': HTMLHtRichtextParserElement
     'ht-stock': HTMLHtStockElement
@@ -1733,6 +1799,7 @@ declare global {
     'nb-canvas-radar': HTMLNbCanvasRadarElement;
     'nb-chart': HTMLNbChartElement;
     'nb-cropper': HTMLNbCropperElement;
+    'nb-header-nav': HTMLNbHeaderNavElement;
     'ht-emoji': HTMLHtEmojiElement;
     'ht-richtext-parser': HTMLHtRichtextParserElement;
     'ht-stock': HTMLHtStockElement;
