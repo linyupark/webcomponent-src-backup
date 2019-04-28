@@ -83,6 +83,7 @@ const CLIENT_COMPONENTS = {
     'picker/datetime',
     'list',
     'list-item',
+    'header',
     'marquee',
     'switch'
   ],
