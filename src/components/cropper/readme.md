@@ -7,25 +7,12 @@
 
 ## Properties
 
-| Property             | Attribute              | Description | Type      | Default     |
-| -------------------- | ---------------------- | ----------- | --------- | ----------- |
-| `aspectRatio`        | `aspect-ratio`         |             | `number`  | `15`        |
-| `cropBoxResizable`   | `crop-box-resizable`   |             | `boolean` | `false`     |
-| `file`               | `file`                 |             | `string`  | `undefined` |
-| `inputImageRef`      | `input-image-ref`      |             | `string`  | `undefined` |
-| `minContainerHeight` | `min-container-height` |             | `number`  | `450`       |
-| `minContainerWidth`  | `min-container-width`  |             | `number`  | `375`       |
-| `naturalHeight`      | `natural-height`       |             | `number`  | `1`         |
-| `naturalWidth`       | `natural-width`        |             | `number`  | `1`         |
-| `scalable`           | `scalable`             |             | `boolean` | `false`     |
-| `zoomable`           | `zoomable`             |             | `boolean` | `false`     |
-
-
-## Events
-
-| Event   | Description | Type                |
-| ------- | ----------- | ------------------- |
-| `ready` |             | `CustomEvent<void>` |
+| Property             | Attribute              | Description    | Type      | Default |
+| -------------------- | ---------------------- | -------------- | --------- | ------- |
+| `aspectRatio`        | `aspect-ratio`         | 裁切比例           | `number`  | `1 / 1` |
+| `cropBoxResizable`   | `crop-box-resizable`   | 允许通过拖动调整裁剪框的大小 | `boolean` | `false` |
+| `minContainerHeight` | `min-container-height` | div最小高度        | `number`  | `450`   |
+| `minContainerWidth`  | `min-container-width`  | div最小宽度        | `number`  | `375`   |
 
 
 ## Methods

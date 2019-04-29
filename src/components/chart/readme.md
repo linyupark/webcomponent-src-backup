@@ -7,19 +7,18 @@
 
 ## Properties
 
-| Property     | Attribute      | Description | Type                   | Default                            |
-| ------------ | -------------- | ----------- | ---------------------- | ---------------------------------- |
-| `chartData`  | --             |             | `any[]`                | `undefined`                        |
-| `height`     | `height`       |             | `number`               | `400`                              |
-| `legend`     | `legend`       |             | `boolean`              | `false`                            |
-| `legendSort` | `legend-sort`  |             | `string`               | `undefined`                        |
-| `padding`    | --             |             | `(string \| number)[]` | `['auto', 'auto', 'auto', 'auto']` |
-| `pieLabel`   | `pie-label`    |             | `boolean`              | `false`                            |
-| `position`   | `position`     |             | `string`               | `undefined`                        |
-| `type`       | `type`         |             | `string`               | `undefined`                        |
-| `width`      | `width`        |             | `number`               | `400`                              |
-| `xTickCount` | `x-tick-count` |             | `number`               | `6`                                |
-| `xcolor`     | --             |             | `string[]`             | `undefined`                        |
+| Property     | Attribute      | Description                  | Type                   | Default                            |
+| ------------ | -------------- | ---------------------------- | ---------------------- | ---------------------------------- |
+| `chartData`  | --             | 数据                           | `any[]`                | `undefined`                        |
+| `height`     | `height`       | canvas高度                     | `number`               | `400`                              |
+| `legendSort` | `legend-sort`  | 图例显示键名                       | `string`               | `undefined`                        |
+| `padding`    | --             | canvas padding               | `(string \| number)[]` | `['auto', 'auto', 'auto', 'auto']` |
+| `pieLabel`   | `pie-label`    | 是否显示pieLabel                 | `boolean`              | `false`                            |
+| `position`   | `position`     | x轴与y轴键名，example:'date*value' | `string`               | `undefined`                        |
+| `type`       | `type`         | 图表类型                         | `"line" \| "pie"`      | `undefined`                        |
+| `width`      | `width`        | canvas宽度                     | `number`               | `400`                              |
+| `xTickCount` | `x-tick-count` | x轴刻度个数                       | `number`               | `6`                                |
+| `xcolor`     | --             | 数据块颜色列表                      | `string[]`             | `undefined`                        |
 
 
 ## Methods
@@ -62,17 +61,7 @@ Type: `Promise<any>`
 
 ### `renderChart() => Promise<void>`
 
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `repaint() => Promise<void>`
-
-当修改了 guide、geometry 的配置项时可以重新绘制图表。
+渲染图表
 
 #### Returns
 
@@ -80,9 +69,9 @@ Type: `Promise<void>`
 
 
 
-### `repaintChart() => Promise<any>`
+### `repaint() => Promise<any>`
 
-
+当修改了配置项时可以重新绘制图表。
 
 #### Returns
 

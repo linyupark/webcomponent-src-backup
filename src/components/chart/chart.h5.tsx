@@ -14,24 +14,70 @@ import PieLabel from '@antv/f2/lib/plugin/pie-label';
   shadow: true,
 })
 export class NbChart {
-  // private Chart;
-  @Element() el: HTMLElement;
-  @Prop() width: number = 400;
-  @Prop() height: number = 400;
-  @Prop() chartData: Array<any>;
-  @Prop() type: string;
-  @Prop() position: string;//x轴与y轴键名
-  @Prop() padding: Array<string | number> = ['auto', 'auto', 'auto', 'auto'];
-  @Prop() pieLabel: boolean = false;//饼图label显示
-  @Prop() xTickCount: number = 6;//坐标图x轴刻度个数
-  @Prop() legend: boolean = false;  //图例显示
-  @Prop() legendSort: string;  //图例显示
-  @Prop() xcolor: Array<string>;
-  chart: any;
-  canvas;
   Util = F2.Util;
   G = F2.G;
   Group = F2.G.Group;
+  /**
+   * 根
+   */
+  @Element() el: HTMLElement;
+
+  /**
+   * canvas宽度
+   */
+  @Prop() width: number = 400;
+
+  /**
+   * canvas高度
+   */
+  @Prop() height: number = 400;
+
+  /**
+   * 数据
+   */
+  @Prop() chartData: Array<any>;
+
+  /**
+   * 图表类型
+   */
+  @Prop() type: 'pie' | 'line';
+
+  /**
+   * x轴与y轴键名，example:'date*value'
+   */
+  @Prop() position: string;
+
+  /**
+   * canvas padding
+   */
+  @Prop() padding: Array<string | number> = ['auto', 'auto', 'auto', 'auto'];
+
+  /**
+   * 是否显示pieLabel
+   */
+  @Prop() pieLabel: boolean = false;
+
+  /**
+   * x轴刻度个数
+   */
+  @Prop() xTickCount: number = 6;
+
+  /**
+   * 图例显示键名
+   */
+  @Prop() legendSort: string;
+
+  /**
+   * 数据块颜色列表
+   */
+  @Prop() xcolor: Array<string>;
+
+  chart: any;
+  canvas;
+
+  /**
+   * type与render函数映射关系
+   */
   chartRenderMap = () => {
     return {
       // 'histogram': this.histogramRender,
@@ -44,20 +90,23 @@ export class NbChart {
 
   }
 
+  /**
+   * 插件列表
+   */
   get plugins() {
     let pluginList = [];
     if (this.pieLabel) {
       pluginList.push(PieLabel);
     }
-    return pluginList
+    return pluginList;
   }
 
   /**
-   * 当修改了 guide、geometry 的配置项时可以重新绘制图表。
+   * 当修改了配置项时可以重新绘制图表。
    */
   @Method()
   async repaint() {
-    this.chart.repaint();
+    return this.chart.repaint();
   }
 
   /**
@@ -77,6 +126,9 @@ export class NbChart {
     this.chart.changeData(data);
   }
 
+  /**
+   * 渲染图表
+   */
   @Method()
   async renderChart() {
     this.chart = new F2.Chart({
@@ -91,11 +143,6 @@ export class NbChart {
     this.chart.render();
   }
 
-  @Method()
-  async repaintChart() {
-    return this.chart.repaint();
-  }
-
   /**
    * 返回chart实例方便自定义配置，具体配置https://www.yuque.com/antv/f2
    */
@@ -104,6 +151,9 @@ export class NbChart {
     return this.chart;
   }
 
+  /**
+   * 设置饼图label
+   */
   setPieLabel() {
     this.chart.pieLabel({
       inflectionOffset: 70,
@@ -128,12 +178,18 @@ export class NbChart {
     });
   }
 
+  /**
+   * 设置图例
+   */
   setLegend() {
     this.chart.legend({
       position: 'right',
     });
   }
 
+  /**
+   * 饼图渲染
+   */
   pieRender = () => {
     this.chartData.forEach((value) => {
       value['a'] = 1;
@@ -153,9 +209,11 @@ export class NbChart {
       lineCap: 'round',
     });
     this.pieLabel && this.setPieLabel();
-    this.legend && this.setLegend();
+    this.legendSort && this.setLegend();
   };
-
+  /**
+   * 折线图渲染
+   */
   lineRender = () => {
     let sourceConfig = {};
     let positionKeyList = this.position.split('*');

@@ -295,6 +295,9 @@ export namespace Components {
     * 改变数据，同时图表刷新
     */
     'changeData': (data: any) => Promise<void>;
+    /**
+    * 数据
+    */
     'chartData': Array<any>;
     /**
     * 清除图表内容
@@ -304,69 +307,137 @@ export namespace Components {
     * 返回chart实例方便自定义配置，具体配置https://www.yuque.com/antv/f2
     */
     'getInstance': () => Promise<any>;
+    /**
+    * canvas高度
+    */
     'height': number;
-    'legend': boolean;
+    /**
+    * 图例显示键名
+    */
     'legendSort': string;
+    /**
+    * canvas padding
+    */
     'padding': Array<string | number>;
+    /**
+    * 是否显示pieLabel
+    */
     'pieLabel': boolean;
+    /**
+    * x轴与y轴键名，example:'date*value'
+    */
     'position': string;
+    /**
+    * 渲染图表
+    */
     'renderChart': () => Promise<void>;
     /**
-    * 当修改了 guide、geometry 的配置项时可以重新绘制图表。
+    * 当修改了配置项时可以重新绘制图表。
     */
-    'repaint': () => Promise<void>;
-    'repaintChart': () => Promise<any>;
-    'type': string;
+    'repaint': () => Promise<any>;
+    /**
+    * 图表类型
+    */
+    'type': 'pie' | 'line';
+    /**
+    * canvas宽度
+    */
     'width': number;
+    /**
+    * x轴刻度个数
+    */
     'xTickCount': number;
+    /**
+    * 数据块颜色列表
+    */
     'xcolor': Array<string>;
   }
   interface NbChartAttributes extends StencilHTMLAttributes {
+    /**
+    * 数据
+    */
     'chartData'?: Array<any>;
+    /**
+    * canvas高度
+    */
     'height'?: number;
-    'legend'?: boolean;
+    /**
+    * 图例显示键名
+    */
     'legendSort'?: string;
+    /**
+    * canvas padding
+    */
     'padding'?: Array<string | number>;
+    /**
+    * 是否显示pieLabel
+    */
     'pieLabel'?: boolean;
+    /**
+    * x轴与y轴键名，example:'date*value'
+    */
     'position'?: string;
-    'type'?: string;
+    /**
+    * 图表类型
+    */
+    'type'?: 'pie' | 'line';
+    /**
+    * canvas宽度
+    */
     'width'?: number;
+    /**
+    * x轴刻度个数
+    */
     'xTickCount'?: number;
+    /**
+    * 数据块颜色列表
+    */
     'xcolor'?: Array<string>;
   }
 
   interface NbCropper {
+    /**
+    * 裁切比例
+    */
     'aspectRatio': number;
     /**
     * 上传图片
     */
     'changeCropper': (file: File) => Promise<void>;
+    /**
+    * 允许通过拖动调整裁剪框的大小
+    */
     'cropBoxResizable': boolean;
-    'file': string;
     /**
     * 获取base64图片数据
     */
     'getImgData': () => Promise<{ data: any; }>;
-    'inputImageRef': string;
+    /**
+    * div最小高度
+    */
     'minContainerHeight': number;
+    /**
+    * div最小宽度
+    */
     'minContainerWidth': number;
-    'naturalHeight': number;
-    'naturalWidth': number;
-    'scalable': boolean;
-    'zoomable': boolean;
   }
   interface NbCropperAttributes extends StencilHTMLAttributes {
+    /**
+    * 裁切比例
+    */
     'aspectRatio'?: number;
+    /**
+    * 允许通过拖动调整裁剪框的大小
+    */
     'cropBoxResizable'?: boolean;
-    'file'?: string;
-    'inputImageRef'?: string;
+    /**
+    * div最小高度
+    */
     'minContainerHeight'?: number;
+    /**
+    * div最小宽度
+    */
     'minContainerWidth'?: number;
-    'naturalHeight'?: number;
-    'naturalWidth'?: number;
-    'onReady'?: (event: CustomEvent) => void;
-    'scalable'?: boolean;
-    'zoomable'?: boolean;
   }
 
   interface NbHeaderNav {
@@ -1037,29 +1108,95 @@ export namespace Components {
   }
 
   interface NbSwiper {
-    'box': string;
+    /**
+    * 自动播放间隔
+    */
+    'autoDelay': number;
+    /**
+    * 使用拖动和触摸滑动
+    */
     'draggable': boolean;
+    /**
+    * 幻灯片转换持续时间
+    */
     'duration': number;
+    /**
+    * 动画,类似CSS transition-timing-function。
+    */
     'easing': string;
+    /**
+    * 是否循环
+    */
     'loop': boolean;
+    /**
+    * 是否允许拖动以移动多个幻灯片
+    */
     'multipleDrag': boolean;
-    'perPage': number;
+    /**
+    * 要显示幻灯片的数量 object{      800: 2, // 2 items 超过 800px      1240: 3 // 3 items 超过 1240px }
+    */
+    'perPage': number | object;
+    /**
+    * 是否从右往左
+    */
     'rtl': boolean;
+    /**
+    * 起始幻灯片的索引
+    */
     'startIndex': number;
+    /**
+    * 触摸和鼠标拖动阈值（以px为单位）
+    */
     'threshold': number;
   }
   interface NbSwiperAttributes extends StencilHTMLAttributes {
-    'box'?: string;
+    /**
+    * 自动播放间隔
+    */
+    'autoDelay'?: number;
+    /**
+    * 使用拖动和触摸滑动
+    */
     'draggable'?: boolean;
+    /**
+    * 幻灯片转换持续时间
+    */
     'duration'?: number;
+    /**
+    * 动画,类似CSS transition-timing-function。
+    */
     'easing'?: string;
+    /**
+    * 是否循环
+    */
     'loop'?: boolean;
+    /**
+    * 是否允许拖动以移动多个幻灯片
+    */
     'multipleDrag'?: boolean;
+    /**
+    * 当前index发生变化
+    */
     'onOnChange'?: (event: CustomEvent) => void;
+    /**
+    * 初始化swiper
+    */
     'onOnInit'?: (event: CustomEvent) => void;
-    'perPage'?: number;
+    /**
+    * 要显示幻灯片的数量 object{      800: 2, // 2 items 超过 800px      1240: 3 // 3 items 超过 1240px }
+    */
+    'perPage'?: number | object;
+    /**
+    * 是否从右往左
+    */
     'rtl'?: boolean;
+    /**
+    * 起始幻灯片的索引
+    */
     'startIndex'?: number;
+    /**
+    * 触摸和鼠标拖动阈值（以px为单位）
+    */
     'threshold'?: number;
   }
 
