@@ -96,6 +96,15 @@ export class ButtonAsync {
   }
 
   /**
+   * 手动触发倒计时
+   */
+  @Method()
+  async startCountdown() {
+    this.handleCountdown();
+    return true;
+  }
+
+  /**
    * 是否处于loading状态
    */
   @Prop({ mutable: true }) loading: boolean = false;

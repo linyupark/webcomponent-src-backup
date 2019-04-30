@@ -42,6 +42,16 @@ Type: `Promise<boolean>`
 
 
 
+### `startCountdown() => Promise<boolean>`
+
+手动触发倒计时
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
 
 ----------------------------------------------
 

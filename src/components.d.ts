@@ -178,6 +178,10 @@ export namespace Components {
     */
     'radius': number;
     /**
+    * 手动触发倒计时
+    */
+    'startCountdown': () => Promise<boolean>;
+    /**
     * 宽度
     */
     'width': number;
