@@ -149,13 +149,11 @@ export class Modal {
         <div class="wrapper">
           <div class="box">
             {/* 标题 */}
-            {this.headTitle !== '' && <div class="title">{this.headTitle}</div>}
+            <div class="title">{this.headTitle}</div>
             {/* 正文 */}
-            {this.headTitle !== '' && (
-              <div class="content">
-                <slot />
-              </div>
-            )}
+            <div class="content">
+              <slot />
+            </div>
             {/* 按钮 */}
             <div class="buttons">
             {this.type === 'confirm' && (

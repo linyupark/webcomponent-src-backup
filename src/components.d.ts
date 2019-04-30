@@ -825,46 +825,6 @@ export namespace Components {
     'placeholder'?: string;
   }
 
-  interface NbTimelineItem {
-    /**
-    * 时间线节点颜色,暂时只支持rgb格式
-    */
-    'color': string;
-    /**
-    * 自定义icon类
-    */
-    'icon': string;
-    /**
-    * 是否显示节点阴影
-    */
-    'shadow': boolean;
-    /**
-    * 是否显示时间线条
-    */
-    'tail': boolean;
-  }
-  interface NbTimelineItemAttributes extends StencilHTMLAttributes {
-    /**
-    * 时间线节点颜色,暂时只支持rgb格式
-    */
-    'color'?: string;
-    /**
-    * 自定义icon类
-    */
-    'icon'?: string;
-    /**
-    * 是否显示节点阴影
-    */
-    'shadow'?: boolean;
-    /**
-    * 是否显示时间线条
-    */
-    'tail'?: boolean;
-  }
-
-  interface NbTimeline {}
-  interface NbTimelineAttributes extends StencilHTMLAttributes {}
-
   interface NbToast {
     /**
     * 消失延时时间 0 -> 不自动消失
@@ -1027,8 +987,6 @@ declare global {
     'NbSwitch': Components.NbSwitch;
     'NbTabSlide': Components.NbTabSlide;
     'NbLimitTextarea': Components.NbLimitTextarea;
-    'NbTimelineItem': Components.NbTimelineItem;
-    'NbTimeline': Components.NbTimeline;
     'NbToast': Components.NbToast;
     'NbUploadSimpleImage': Components.NbUploadSimpleImage;
     'NbVscrollNav': Components.NbVscrollNav;
@@ -1051,8 +1009,6 @@ declare global {
     'nb-switch': Components.NbSwitchAttributes;
     'nb-tab-slide': Components.NbTabSlideAttributes;
     'nb-limit-textarea': Components.NbLimitTextareaAttributes;
-    'nb-timeline-item': Components.NbTimelineItemAttributes;
-    'nb-timeline': Components.NbTimelineAttributes;
     'nb-toast': Components.NbToastAttributes;
     'nb-upload-simple-image': Components.NbUploadSimpleImageAttributes;
     'nb-vscroll-nav': Components.NbVscrollNavAttributes;
@@ -1155,18 +1111,6 @@ declare global {
     new (): HTMLNbLimitTextareaElement;
   };
 
-  interface HTMLNbTimelineItemElement extends Components.NbTimelineItem, HTMLStencilElement {}
-  var HTMLNbTimelineItemElement: {
-    prototype: HTMLNbTimelineItemElement;
-    new (): HTMLNbTimelineItemElement;
-  };
-
-  interface HTMLNbTimelineElement extends Components.NbTimeline, HTMLStencilElement {}
-  var HTMLNbTimelineElement: {
-    prototype: HTMLNbTimelineElement;
-    new (): HTMLNbTimelineElement;
-  };
-
   interface HTMLNbToastElement extends Components.NbToast, HTMLStencilElement {}
   var HTMLNbToastElement: {
     prototype: HTMLNbToastElement;
@@ -1202,8 +1146,6 @@ declare global {
     'nb-switch': HTMLNbSwitchElement
     'nb-tab-slide': HTMLNbTabSlideElement
     'nb-limit-textarea': HTMLNbLimitTextareaElement
-    'nb-timeline-item': HTMLNbTimelineItemElement
-    'nb-timeline': HTMLNbTimelineElement
     'nb-toast': HTMLNbToastElement
     'nb-upload-simple-image': HTMLNbUploadSimpleImageElement
     'nb-vscroll-nav': HTMLNbVscrollNavElement
@@ -1226,8 +1168,6 @@ declare global {
     'nb-switch': HTMLNbSwitchElement;
     'nb-tab-slide': HTMLNbTabSlideElement;
     'nb-limit-textarea': HTMLNbLimitTextareaElement;
-    'nb-timeline-item': HTMLNbTimelineItemElement;
-    'nb-timeline': HTMLNbTimelineElement;
     'nb-toast': HTMLNbToastElement;
     'nb-upload-simple-image': HTMLNbUploadSimpleImageElement;
     'nb-vscroll-nav': HTMLNbVscrollNavElement;
