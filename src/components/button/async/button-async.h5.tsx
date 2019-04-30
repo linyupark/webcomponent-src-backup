@@ -96,15 +96,6 @@ export class ButtonAsync {
   }
 
   /**
-   * 手动触发倒计时
-   */
-  @Method()
-  async startCountdown() {
-    this.handleCountdown();
-    return true;
-  }
-
-  /**
    * 是否处于loading状态
    */
   @Prop({ mutable: true }) loading: boolean = false;
@@ -161,12 +152,14 @@ export class ButtonAsync {
       clearTimeout(this.countdownTimer);
       this.done();
     }
+    return true;
   }
 
   /**
    * 处理点击
    */
-  private onClick() {
+  @Method()
+  async onClick() {
     this.loading = true;
     if (this.countdown > 0) {
       // 包含倒计时
@@ -179,6 +172,7 @@ export class ButtonAsync {
     this.tap.emit({
       done: this.done.bind(this)
     });
+    return true;
   }
 
   componentDidLoad() {

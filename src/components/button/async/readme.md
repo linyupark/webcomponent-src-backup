@@ -42,9 +42,9 @@ Type: `Promise<boolean>`
 
 
 
-### `startCountdown() => Promise<boolean>`
+### `onClick() => Promise<boolean>`
 
-手动触发倒计时
+处理点击
 
 #### Returns
 

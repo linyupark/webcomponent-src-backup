@@ -174,13 +174,13 @@ export namespace Components {
     */
     'noBorder': boolean;
     /**
+    * 处理点击
+    */
+    'onClick': () => Promise<boolean>;
+    /**
     * 圆角
     */
     'radius': number;
-    /**
-    * 手动触发倒计时
-    */
-    'startCountdown': () => Promise<boolean>;
     /**
     * 宽度
     */
