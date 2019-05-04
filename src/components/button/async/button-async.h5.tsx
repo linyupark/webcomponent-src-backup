@@ -196,7 +196,7 @@ export class ButtonAsync {
           status: 'start'
         });
       }
-      this.handleCountdown();
+      if (!this.countdownTimer) this.handleCountdown();
     }
     this.tap.emit({
       done: this.done.bind(this)
