@@ -67,14 +67,24 @@ export class ButtonAsync {
   @Prop() countdown: number = 0;
 
   /**
-   * 倒计时后面追加的单位
-   */
-  @Prop() countdownUnit: string = 's';
-
-  /**
    * 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数）
    */
   @Prop() countdownContainer: string = '.countdown';
+
+  /**
+   * 倒计时完毕后恢复内容
+   */
+  @Prop() countdownOrigin: string = '.origin';
+
+  /**
+   * 替换 ？？变为倒计时
+   */
+  @Prop() countdownReplace: string = '%n';
+
+  /**
+   * 倒计时显示内容
+   */
+  @Prop() countdownHtml: string = '倒计时%n秒';
 
   /**
    * 点击对应的处理已经完成
@@ -82,6 +92,7 @@ export class ButtonAsync {
   @Method()
   async done() {
     const countdownEl = this.el.querySelector(this.countdownContainer);
+    const originEl = this.el.querySelector(this.countdownOrigin) as HTMLElement;
     this.disable = false;
     this.loading = false;
     this.countdownDisplay = 0;
@@ -91,6 +102,9 @@ export class ButtonAsync {
     });
     if (countdownEl) {
       countdownEl.innerHTML = '';
+    }
+    if (originEl) {
+      originEl.style.display = 'block';
     }
     return true;
   }
@@ -141,8 +155,12 @@ export class ButtonAsync {
   private handleCountdown() {
     this.disable = true;
     const countdownEl = this.el.querySelector(this.countdownContainer);
+    const originEl = this.el.querySelector(this.countdownOrigin) as HTMLElement;
     if (countdownEl) {
-      countdownEl.innerHTML = String(this.countdownDisplay) + this.countdownUnit;
+      countdownEl.innerHTML = this.countdownHtml.replace(this.countdownReplace, String(this.countdownDisplay));
+    }
+    if (originEl) {
+      originEl.style.display = 'none';
     }
     sessionStorage.setItem(COUNTDOWN_SESSION, String(this.countdownDisplay));
     if (this.countdownDisplay > 0) {
