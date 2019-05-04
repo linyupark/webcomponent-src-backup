@@ -154,6 +154,10 @@ export namespace Components {
     */
     'countdownHtml': string;
     /**
+    * 如果是有多个倒计时的需要设置唯一id
+    */
+    'countdownId': number;
+    /**
     * 倒计时完毕后恢复内容
     */
     'countdownOrigin': string;
@@ -215,6 +219,10 @@ export namespace Components {
     * 倒计时显示内容
     */
     'countdownHtml'?: string;
+    /**
+    * 如果是有多个倒计时的需要设置唯一id
+    */
+    'countdownId'?: number;
     /**
     * 倒计时完毕后恢复内容
     */

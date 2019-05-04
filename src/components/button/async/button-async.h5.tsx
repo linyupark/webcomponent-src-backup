@@ -62,6 +62,11 @@ export class ButtonAsync {
   @Prop() noBorder: boolean = false;
 
   /**
+   * 如果是有多个倒计时的需要设置唯一id
+   */
+  @Prop() countdownId: number = 0;
+
+  /**
    * 如果按钮有倒计时功能该属性设置起始数字
    */
   @Prop() countdown: number = 0;
@@ -96,7 +101,7 @@ export class ButtonAsync {
     this.disable = false;
     this.loading = false;
     this.countdownDisplay = 0;
-    sessionStorage.removeItem(COUNTDOWN_SESSION);
+    sessionStorage.removeItem(COUNTDOWN_SESSION + this.countdownId);
     this.count.emit({
       status: 'finish'
     });
@@ -123,7 +128,7 @@ export class ButtonAsync {
    * 显示倒计时数字
    */
   @State() countdownDisplay: number = Number(
-    sessionStorage.getItem(COUNTDOWN_SESSION) || 0
+    sessionStorage.getItem(COUNTDOWN_SESSION + this.countdownId) || 0
   );
 
   /**
@@ -157,12 +162,18 @@ export class ButtonAsync {
     const countdownEl = this.el.querySelector(this.countdownContainer);
     const originEl = this.el.querySelector(this.countdownOrigin) as HTMLElement;
     if (countdownEl) {
-      countdownEl.innerHTML = this.countdownHtml.replace(this.countdownReplace, String(this.countdownDisplay));
+      countdownEl.innerHTML = this.countdownHtml.replace(
+        this.countdownReplace,
+        String(this.countdownDisplay)
+      );
     }
     if (originEl) {
       originEl.style.display = 'none';
     }
-    sessionStorage.setItem(COUNTDOWN_SESSION, String(this.countdownDisplay));
+    sessionStorage.setItem(
+      COUNTDOWN_SESSION + this.countdownId,
+      String(this.countdownDisplay)
+    );
     if (this.countdownDisplay > 0) {
       this.countdownDisplay--;
       this.countdownTimer = setTimeout(this.handleCountdown.bind(this), 1000);
@@ -200,6 +211,10 @@ export class ButtonAsync {
     if (this.countdownDisplay > 0 && this.countdown > 0) {
       this.handleCountdown();
     }
+  }
+
+  componentDidUnload() {
+    clearTimeout(this.countdownTimer);
   }
 
   render() {
