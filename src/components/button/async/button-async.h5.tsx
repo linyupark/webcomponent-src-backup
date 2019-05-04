@@ -181,10 +181,12 @@ export class ButtonAsync {
     this.loading = true;
     if (this.countdown > 0) {
       // 包含倒计时
-      this.countdownDisplay = this.countdown;
-      this.count.emit({
-        status: 'start'
-      });
+      if (this.countdownDisplay == 0) {
+        this.countdownDisplay = this.countdown;
+        this.count.emit({
+          status: 'start'
+        });
+      }
       this.handleCountdown();
     }
     this.tap.emit({
@@ -196,9 +198,6 @@ export class ButtonAsync {
   componentDidLoad() {
     // 如果是刷新后还有未完成的倒计时
     if (this.countdownDisplay > 0 && this.countdown > 0) {
-      this.count.emit({
-        status: 'start'
-      });
       this.handleCountdown();
     }
   }
