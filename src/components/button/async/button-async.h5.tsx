@@ -127,9 +127,7 @@ export class ButtonAsync {
   /**
    * 显示倒计时数字
    */
-  @State() countdownDisplay: number = Number(
-    sessionStorage.getItem(COUNTDOWN_SESSION + this.countdownId) || 0
-  );
+  @State() countdownDisplay: number = 0;
 
   /**
    * 设置按钮样式
@@ -204,6 +202,13 @@ export class ButtonAsync {
       done: this.done.bind(this)
     });
     return true;
+  }
+
+  componentWillLoad() {
+    // session 暂存的数据恢复
+    this.countdownDisplay = Number(
+      sessionStorage.getItem(COUNTDOWN_SESSION + this.countdownId) || 0
+    );
   }
 
   componentDidLoad() {
