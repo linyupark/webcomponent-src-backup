@@ -64,7 +64,7 @@ export class ButtonAsync {
   /**
    * 如果是有多个倒计时的需要设置唯一id
    */
-  @Prop() countdownId: number = 0;
+  @Prop() countdownId: string = '';
 
   /**
    * 如果按钮有倒计时功能该属性设置起始数字

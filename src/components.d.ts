@@ -156,7 +156,7 @@ export namespace Components {
     /**
     * 如果是有多个倒计时的需要设置唯一id
     */
-    'countdownId': number;
+    'countdownId': string;
     /**
     * 倒计时完毕后恢复内容
     */
@@ -222,7 +222,7 @@ export namespace Components {
     /**
     * 如果是有多个倒计时的需要设置唯一id
     */
-    'countdownId'?: number;
+    'countdownId'?: string;
     /**
     * 倒计时完毕后恢复内容
     */
