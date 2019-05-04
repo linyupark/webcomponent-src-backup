@@ -170,6 +170,10 @@ export namespace Components {
     */
     'done': () => Promise<boolean>;
     /**
+    * 处理点击
+    */
+    'handleClick': () => Promise<boolean>;
+    /**
     * 高度
     */
     'height': number;
@@ -181,10 +185,6 @@ export namespace Components {
     * 没有外边框
     */
     'noBorder': boolean;
-    /**
-    * 处理点击
-    */
-    'onClick': () => Promise<boolean>;
     /**
     * 圆角
     */

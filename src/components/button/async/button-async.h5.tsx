@@ -177,7 +177,7 @@ export class ButtonAsync {
    * 处理点击
    */
   @Method()
-  async onClick() {
+  async handleClick() {
     this.loading = true;
     if (this.countdown > 0) {
       // 包含倒计时
@@ -206,7 +206,7 @@ export class ButtonAsync {
   render() {
     return (
       <button
-        onClick={this.onClick.bind(this)}
+        onClick={this.handleClick.bind(this)}
         disabled={this.disable || this.loading}
         class={`btn ${this.loading ? 'loading' : ''}`}
         style={{
