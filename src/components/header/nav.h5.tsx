@@ -17,11 +17,7 @@ export class HeaderNav {
   /**
    * 设置样式合集
    */
-  @Prop() styles: any = {
-    height: 88,
-    background: '#ffffff',
-    color: '#272727'
-  };
+  @Prop() styles: any = {};
 
   /**
    * 有下划线
@@ -52,6 +48,12 @@ export class HeaderNav {
    * 实际给容器的定制样式
    */
   get containerStyles() {
+    // 默认样式
+    const defaultStyles = {
+      height: 88,
+      background: '#ffffff',
+      color: '#272727'
+    };
     // 转换单位
     const height = `${(this.styles.height || 88) / 75}rem`;
     const width = `${(750 - this.space * 2) / 75}rem`;
@@ -59,6 +61,7 @@ export class HeaderNav {
     const position = this.fixed > 0 ? 'fixed' : 'relative';
     const zIndex = this.fixed;
     return {
+      ...defaultStyles,
       ...this.styles,
       padding,
       width,
