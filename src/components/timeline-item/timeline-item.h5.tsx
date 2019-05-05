@@ -29,7 +29,7 @@ export class TimelineItemH5 {
   /**
    * 是否显示时间线条
    */
-  @Prop() tail: boolean = false;
+  @Prop() tail: boolean = true;
 
 
   componentDidLoad() {

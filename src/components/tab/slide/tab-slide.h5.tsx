@@ -1,4 +1,4 @@
-import { Component, Prop, State, Element, Watch, Event, EventEmitter } from '@stencil/core';
+import {Component, Prop, State, Element, Watch, Event, EventEmitter} from '@stencil/core';
 
 /**
  * 滑动效果的 tab 切换
@@ -7,7 +7,7 @@ import { Component, Prop, State, Element, Watch, Event, EventEmitter } from '@st
 @Component({
   tag: 'nb-tab-slide',
   styleUrl: 'tab-slide.h5.styl',
-  shadow: true
+  shadow: true,
 })
 export class TabSlide {
 
@@ -15,7 +15,7 @@ export class TabSlide {
    * 根元素
    */
   @Element() el: HTMLElement;
-  
+
   /**
    * 滑动块的位置，默认：底部
    */
@@ -23,19 +23,19 @@ export class TabSlide {
 
   get slidePositionStyle() {
     return {
-      [this.position]: '0'
-    }
+      [this.position]: '0',
+    };
   }
 
   /**
    * 当前选中的 index
    */
-  @Prop({ mutable: true }) index: number = 0;
+  @Prop({mutable: true}) index: number = 0;
 
   @Watch('index')
   onIndexChange(newIndex) {
     this.change.emit({
-      index: newIndex
+      index: newIndex,
     });
     this.setCurrentTab();
   }
@@ -74,16 +74,25 @@ export class TabSlide {
   private setCurrentTab() {
     const tabItems = this.el.querySelectorAll('div');
     if (tabItems.length === 0) {
-      throw new Error('请在 <nb-tab-slide> 标签内输入 div为容器的选项卡内容.')
+      throw new Error('请在 <nb-tab-slide> 标签内输入 div为容器的选项卡内容.');
     }
     [].forEach.call(tabItems, (item, i) => {
+      this.setWidth(item, tabItems.length);
       // 跟 index 一致的 tab 添加 classname，样式可由具体业务容器去实现
       item.classList.toggle('active', i === this.index);
       item.onclick = () => {
         this.index = i;
-      }
+      };
     });
     this.setSlideLeft();
+  }
+
+  /**
+   * 设置每个tabItem宽度
+   */
+  private setWidth(item, length) {
+    item.style.width = `${(100 / length)}%`;
+    item.style.textAlign = `center`;
   }
 
   /**
@@ -108,15 +117,15 @@ export class TabSlide {
     return (
       <div class="container" style={{
         width: this.tabContainerWidth,
-        height: this.tabContainerHeight
+        height: this.tabContainerHeight,
       }}>
         {/* tab 选项卡 */}
-        <slot />
+        <slot/>
         {/* 滑块 */}
         <div class="slide" style={{
           visibility: this.slideLeft === '0px' ? 'hidden' : 'visible',
           left: String(this.slideLeft),
-          ...this.slidePositionStyle
+          ...this.slidePositionStyle,
         }}></div>
       </div>
     );
