@@ -150,9 +150,21 @@ export namespace Components {
     */
     'countdownContainer': string;
     /**
-    * 倒计时后面追加的单位
+    * 倒计时显示内容
     */
-    'countdownUnit': string;
+    'countdownHtml': string;
+    /**
+    * 如果是有多个倒计时的需要设置唯一id
+    */
+    'countdownId': string;
+    /**
+    * 倒计时完毕后恢复内容
+    */
+    'countdownOrigin': string;
+    /**
+    * 替换 ？？变为倒计时
+    */
+    'countdownReplace': string;
     /**
     * 是否处于disable状态
     */
@@ -161,6 +173,10 @@ export namespace Components {
     * 点击对应的处理已经完成
     */
     'done': () => Promise<boolean>;
+    /**
+    * 处理点击
+    */
+    'handleClick': () => Promise<boolean>;
     /**
     * 高度
     */
@@ -200,9 +216,21 @@ export namespace Components {
     */
     'countdownContainer'?: string;
     /**
-    * 倒计时后面追加的单位
+    * 倒计时显示内容
     */
-    'countdownUnit'?: string;
+    'countdownHtml'?: string;
+    /**
+    * 如果是有多个倒计时的需要设置唯一id
+    */
+    'countdownId'?: string;
+    /**
+    * 倒计时完毕后恢复内容
+    */
+    'countdownOrigin'?: string;
+    /**
+    * 替换 ？？变为倒计时
+    */
+    'countdownReplace'?: string;
     /**
     * 是否处于disable状态
     */

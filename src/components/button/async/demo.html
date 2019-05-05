@@ -45,9 +45,11 @@
 
     <br> <br>
 
-    <nb-button-async no-border class="verify" countdown="30" width="200" height="64" color="#3E86F7" bg="#ffffff">
-      <div style="font-size: .32rem">
+    <nb-button-async no-border class="verify" countdown-id="demo" countdown-html="%ns重新获取" countdown="3" width="200" height="64" color="#3E86F7" bg="#ffffff">
+      <div class="origin" style="font-size: .32rem">
         发送验证码
+      </div>
+      <div class="countdown" style="font-size: .32rem">
       </div>
     </nb-button-async>
 
@@ -77,13 +79,14 @@
     verify.addEventListener('count', ({ detail }) => {
       if (detail.status === 'start') {
         verify.querySelector('div').style.color =  '#999';
-        verify.querySelector('div').innerHTML = '<span class="countdown"></span>重新获取';
         
       } else {
         verify.querySelector('div').style.color =  '#3E86F7';
-        verify.querySelector('div').innerHTML = '发送验证码';
       }
     });
+    setTimeout(() => {
+      verify.handleClick();
+    }, 100);
   </script>
 </body>
 

@@ -62,14 +62,14 @@ export class ButtonAsync {
   @Prop() noBorder: boolean = false;
 
   /**
+   * 如果是有多个倒计时的需要设置唯一id
+   */
+  @Prop() countdownId: string = '';
+
+  /**
    * 如果按钮有倒计时功能该属性设置起始数字
    */
   @Prop() countdown: number = 0;
-
-  /**
-   * 倒计时后面追加的单位
-   */
-  @Prop() countdownUnit: string = 's';
 
   /**
    * 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数）
@@ -77,20 +77,40 @@ export class ButtonAsync {
   @Prop() countdownContainer: string = '.countdown';
 
   /**
+   * 倒计时完毕后恢复内容
+   */
+  @Prop() countdownOrigin: string = '.origin';
+
+  /**
+   * 替换 ？？变为倒计时
+   */
+  @Prop() countdownReplace: string = '%n';
+
+  /**
+   * 倒计时显示内容
+   */
+  @Prop() countdownHtml: string = '倒计时%n秒';
+
+  /**
    * 点击对应的处理已经完成
    */
   @Method()
   async done() {
     const countdownEl = this.el.querySelector(this.countdownContainer);
+    const originEl = this.el.querySelector(this.countdownOrigin) as HTMLElement;
     this.disable = false;
     this.loading = false;
+    this.countdownTimer = null;
     this.countdownDisplay = 0;
-    sessionStorage.removeItem(COUNTDOWN_SESSION);
+    sessionStorage.removeItem(COUNTDOWN_SESSION + this.countdownId);
     this.count.emit({
       status: 'finish'
     });
     if (countdownEl) {
       countdownEl.innerHTML = '';
+    }
+    if (originEl) {
+      originEl.style.display = 'block';
     }
     return true;
   }
@@ -108,9 +128,7 @@ export class ButtonAsync {
   /**
    * 显示倒计时数字
    */
-  @State() countdownDisplay: number = Number(
-    sessionStorage.getItem(COUNTDOWN_SESSION) || 0
-  );
+  @State() countdownDisplay: number = 0;
 
   /**
    * 设置按钮样式
@@ -141,10 +159,20 @@ export class ButtonAsync {
   private handleCountdown() {
     this.disable = true;
     const countdownEl = this.el.querySelector(this.countdownContainer);
+    const originEl = this.el.querySelector(this.countdownOrigin) as HTMLElement;
     if (countdownEl) {
-      countdownEl.innerHTML = String(this.countdownDisplay) + this.countdownUnit;
+      countdownEl.innerHTML = this.countdownHtml.replace(
+        this.countdownReplace,
+        String(this.countdownDisplay)
+      );
     }
-    sessionStorage.setItem(COUNTDOWN_SESSION, String(this.countdownDisplay));
+    if (originEl) {
+      originEl.style.display = 'none';
+    }
+    sessionStorage.setItem(
+      COUNTDOWN_SESSION + this.countdownId,
+      String(this.countdownDisplay)
+    );
     if (this.countdownDisplay > 0) {
       this.countdownDisplay--;
       this.countdownTimer = setTimeout(this.handleCountdown.bind(this), 1000);
@@ -152,40 +180,53 @@ export class ButtonAsync {
       clearTimeout(this.countdownTimer);
       this.done();
     }
+    return true;
   }
 
   /**
    * 处理点击
    */
-  private onClick() {
+  @Method()
+  async handleClick() {
     this.loading = true;
     if (this.countdown > 0) {
       // 包含倒计时
-      this.countdownDisplay = this.countdown;
-      this.count.emit({
-        status: 'start'
-      });
-      this.handleCountdown();
+      if (this.countdownDisplay == 0) {
+        this.countdownDisplay = this.countdown;
+        this.count.emit({
+          status: 'start'
+        });
+      }
+      if (!this.countdownTimer) this.handleCountdown();
     }
     this.tap.emit({
       done: this.done.bind(this)
     });
+    return true;
+  }
+
+  componentWillLoad() {
+    // session 暂存的数据恢复
+    this.countdownDisplay = Number(
+      sessionStorage.getItem(COUNTDOWN_SESSION + this.countdownId) || 0
+    );
   }
 
   componentDidLoad() {
     // 如果是刷新后还有未完成的倒计时
     if (this.countdownDisplay > 0 && this.countdown > 0) {
-      this.count.emit({
-        status: 'start'
-      });
       this.handleCountdown();
     }
+  }
+
+  componentDidUnload() {
+    clearTimeout(this.countdownTimer);
   }
 
   render() {
     return (
       <button
-        onClick={this.onClick.bind(this)}
+        onClick={this.handleClick.bind(this)}
         disabled={this.disable || this.loading}
         class={`btn ${this.loading ? 'loading' : ''}`}
         style={{

@@ -13,7 +13,10 @@
 | `color`              | `color`               | 字体色                               | `string`  | `'#ffffff'`    |
 | `countdown`          | `countdown`           | 如果按钮有倒计时功能该属性设置起始数字               | `number`  | `0`            |
 | `countdownContainer` | `countdown-container` | 倒计时显示占位符（在 slot 对应的选择器内容会被加入倒计秒数） | `string`  | `'.countdown'` |
-| `countdownUnit`      | `countdown-unit`      | 倒计时后面追加的单位                        | `string`  | `'s'`          |
+| `countdownHtml`      | `countdown-html`      | 倒计时显示内容                           | `string`  | `'倒计时%n秒'`     |
+| `countdownId`        | `countdown-id`        | 如果是有多个倒计时的需要设置唯一id                | `string`  | `''`           |
+| `countdownOrigin`    | `countdown-origin`    | 倒计时完毕后恢复内容                        | `string`  | `'.origin'`    |
+| `countdownReplace`   | `countdown-replace`   | 替换 ？？变为倒计时                        | `string`  | `'%n'`         |
 | `disable`            | `disable`             | 是否处于disable状态                     | `boolean` | `false`        |
 | `height`             | `height`              | 高度                                | `number`  | `88`           |
 | `loading`            | `loading`             | 是否处于loading状态                     | `boolean` | `false`        |
@@ -35,6 +38,16 @@
 ### `done() => Promise<boolean>`
 
 点击对应的处理已经完成
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+### `handleClick() => Promise<boolean>`
+
+处理点击
 
 #### Returns
 
