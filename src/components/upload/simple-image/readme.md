@@ -13,6 +13,7 @@
 | `maxLength`   | `max-length`   | 最多能上传几张         | `number` | `4`        |
 | `previewSize` | `preview-size` | 预览图的尺寸          | `number` | `175`      |
 | `rate`        | `rate`         | 将原图缩放至750宽度*多少倍 | `number` | `2`        |
+| `styleId`     | `style-id`     | 自定义样式追加         | `string` | `''`       |
 | `uploadText`  | `upload-text`  | 提示上传按钮的文案       | `string` | `'上传截图'`   |
 
 

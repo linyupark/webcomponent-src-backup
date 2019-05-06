@@ -924,6 +924,10 @@ export namespace Components {
     */
     'rate': number;
     /**
+    * 自定义样式追加
+    */
+    'styleId': string;
+    /**
     * 提示上传按钮的文案
     */
     'uploadText': string;
@@ -953,6 +957,10 @@ export namespace Components {
     * 将原图缩放至750宽度*多少倍
     */
     'rate'?: number;
+    /**
+    * 自定义样式追加
+    */
+    'styleId'?: string;
     /**
     * 提示上传按钮的文案
     */

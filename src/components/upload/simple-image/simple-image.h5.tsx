@@ -23,6 +23,12 @@ const ICONS = {
   shadow: true
 })
 export class UploadSimpleImage {
+
+  /**
+   * 自定义样式追加
+   */
+  @Prop() styleId: string = '';
+
   /**
    * 最多能上传几张
    */
@@ -320,14 +326,14 @@ export class UploadSimpleImage {
 
   render() {
     return [
-      <div class="upload-images">
+      <div class={`upload-images ${this.styleId}`}>
         {this.previewImages.map(img => {
           return (
             <div
               class="preview"
               style={{
                 ...this.previewStyles,
-                backgroundImage: `url(${img.url || img.base64})`
+                background: `url(${img.url || img.base64}) no-repeat center / cover`
               }}
             >
               <i
