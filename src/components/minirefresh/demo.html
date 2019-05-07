@@ -20,12 +20,17 @@
     .demo {
       font-size: .46rem;
     }
+
+    #demoList {
+      margin: 0;
+      padding: 0;
+    }
   </style>
 </head>
 
 <body>
   <div class="demo">
-    <nb-refresh>
+    <nb-refresh background="#f5f5f5">
       <ul id="demoList">
         <li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li>
         <li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li>
@@ -48,13 +53,13 @@
         list.appendChild(newItem());
         list.appendChild(newItem());
         // true表示没有更多了
-        detail.noMore(false);
+        // detail.noMore(false);
       }, 1000);
     });
     el.addEventListener('refresh', function({detail}) {
       setTimeout(() => {
         list.insertBefore(newItem(), list.firstChild);
-        detail.finish(true);
+        // detail.finish(true);
       }, 1000);
     });
   </script>

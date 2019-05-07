@@ -433,6 +433,10 @@ export namespace Components {
     */
     'autoScrollLoad': boolean;
     /**
+    * 提示文字区域的背景色
+    */
+    'background': string;
+    /**
     * 获取 refresh 实例化对象
     */
     'getRefresh': () => Promise<any>;
@@ -462,6 +466,10 @@ export namespace Components {
     * 自动执行一次上拉加载
     */
     'autoScrollLoad'?: boolean;
+    /**
+    * 提示文字区域的背景色
+    */
+    'background'?: string;
     /**
     * 禁用下拉刷新
     */

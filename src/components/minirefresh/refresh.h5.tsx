@@ -39,7 +39,12 @@ export class Refresh {
   /**
    * 上下拉动的阀值
    */
-	@Prop() offset: number = 60;
+	@Prop() offset: number = 40;
+	
+	/**
+	 * 提示文字区域的背景色
+	 */
+	@Prop() background: string = 'none';
 	
 	/**
 	 * 下拉刷新文案方面的配置
@@ -143,6 +148,11 @@ export class Refresh {
       	...scrollLoadOptions
       }
     });
+    // 设置提示信息背景色
+    const downwrap = container.querySelector('.downwrap-content') as HTMLElement;
+    const upwrap = container.querySelector('.minirefresh-upwrap') as HTMLElement;
+    downwrap.style.background = this.background;
+    upwrap.style.background = this.background;
   }
 
   render() {
