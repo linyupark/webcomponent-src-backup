@@ -95,7 +95,7 @@ export class HeaderNav {
             <slot name="left" />
           </div>
         )}
-        <div class="title">
+        <div class={`title ${this.titlePosition}`}>
           <slot name="title" />
         </div>
         <div class="right" onClick={this.handleClick.bind(this, 'right')}>
