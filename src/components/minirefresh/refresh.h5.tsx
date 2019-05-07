@@ -158,7 +158,9 @@ export class Refresh {
   render() {
     return (
       <div class="minirefresh-wrap">
-				<div class="minirefresh-scroll">
+				<div class="minirefresh-scroll" style={{
+					backgroundColor: this.background
+				}}>
 					<slot />
 				</div>
 			</div>
