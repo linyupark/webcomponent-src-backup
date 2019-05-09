@@ -141,12 +141,21 @@ export class Refresh {
       	offset: this.offset,
       	callback: async () => {
       		const refresh = await this.getRefresh();
+      		const position = refresh.getPosition();
         	this.scrollLoad.emit({
-        		noMore: refresh.endUpLoading.bind(refresh)
+        		noMore: (flag) => {
+        			setTimeout(() => {
+        				refresh.scrollTo(position);
+        				refresh.endUpLoading(flag)
+        			}, 300);
+        		},
+        		position: refresh.getPosition(),
+        		refresh
         	});
       	},
       	...scrollLoadOptions
-      }
+      },
+      isScrollBar: false
     });
     // 设置提示信息背景色
     const downwrap = container.querySelector('.downwrap-content') as HTMLElement;

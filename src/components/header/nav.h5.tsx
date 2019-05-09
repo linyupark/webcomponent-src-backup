@@ -22,7 +22,7 @@ export class HeaderNav {
   /**
    * 有下划线
    */
-  @Prop() line: boolean = false;
+  // @Prop() line: boolean = false;
 
   /**
    * 标题显示位置
@@ -67,7 +67,7 @@ export class HeaderNav {
       width,
       height,
       position,
-      zIndex
+      zIndex,
     };
   }
 

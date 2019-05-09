@@ -271,10 +271,6 @@ export namespace Components {
     */
     'fixed': number;
     /**
-    * 有下划线
-    */
-    'line': boolean;
-    /**
     * 左右间距
     */
     'space': number;
@@ -283,7 +279,7 @@ export namespace Components {
     */
     'styles': any;
     /**
-    * 标题显示位置
+    * 有下划线 标题显示位置
     */
     'titlePosition': 'left' | 'center';
     /**
@@ -297,10 +293,6 @@ export namespace Components {
     */
     'fixed'?: number;
     /**
-    * 有下划线
-    */
-    'line'?: boolean;
-    /**
     * 处理点击事件
     */
     'onTap'?: (event: CustomEvent) => void;
@@ -313,7 +305,7 @@ export namespace Components {
     */
     'styles'?: any;
     /**
-    * 标题显示位置
+    * 有下划线 标题显示位置
     */
     'titlePosition'?: 'left' | 'center';
     /**
