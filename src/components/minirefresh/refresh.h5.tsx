@@ -79,6 +79,9 @@ export class Refresh {
     return this.MiniRefresh;
   }
 	
+	// 容器dom
+  private container: any;
+	
 	/**
 	 * refresh 实例化对象
 	 */
@@ -96,7 +99,8 @@ export class Refresh {
 	
   componentDidLoad() {
   	// 获取容器
-    const container = this.el.shadowRoot.querySelector('.minirefresh-wrap');
+    // const container = this.el.shadowRoot.querySelector('.minirefresh-wrap');
+    const container = this.container;
     // 定义皮肤
     const MiniRefresh = MiniRefreshTools.theme.defaults;
     // 刷新配置
@@ -166,7 +170,7 @@ export class Refresh {
 
   render() {
     return (
-      <div class="minirefresh-wrap">
+      <div class="minirefresh-wrap" ref={el => this.container = el}>
 				<div class="minirefresh-scroll" style={{
 					backgroundColor: this.background
 				}}>
